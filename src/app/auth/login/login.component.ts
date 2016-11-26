@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   // where, in this case, selector is the string 'home'
   selector: 'login-form',  // <home></home>
   templateUrl: './login.component.html',
-  styleUrls: [ './login.component.sass' ],
+  styleUrls: [ './login.component.scss' ],
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
   ],

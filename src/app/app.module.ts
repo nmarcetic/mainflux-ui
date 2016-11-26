@@ -4,32 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
-import { Routes, RouterModule } from '@angular/router';
-import { NoContentComponent } from './no-content';
-import { LoginComponent } from './auth';
-
-const ROUTES: Routes = [
-  { path: '',      component: LoginComponent },
-  { path: 'login',  component: LoginComponent },
-  { path: '**',    component: NoContentComponent },
-];
-
-
-//import { ROUTES } from './app.routes';
+// Import app custom modules
+import { AppRoutingModule } from './app.routes';
+import { AuthModule } from './auth';
+// Import app components
 import { AppComponent } from './app.component';
+import { NoContentComponent } from './no-content';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    NoContentComponent
+    NoContentComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: false }),
-    MaterialModule
+    MaterialModule,
+    // Import our custom App modules
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

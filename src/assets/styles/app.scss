@@ -1,0 +1,9 @@
+/* App style module imports
+ You can add global styles to this file, and also import other style files
+ */
+
+// Import material design theme
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+// Import our modules
+@import "_global.scss";
+@import "shared/_vars.scss";
