@@ -45,8 +45,8 @@ This will run and assemble our  app.
  **Now go to `localhost:4200` in your browser to see it in action.**
 
 ### Development
-Follow angular-cli [documentation](https://github.com/angular/angular-cli)
-Follow [official angular style guide](https://angular.io/styleguide)
+- Follow angular-cli [documentation](https://github.com/angular/angular-cli)
+- Follow [official angular style guide](https://angular.io/styleguide)
 
 ### Community
 #### Mailing lists
