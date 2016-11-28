@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 // Import app custom modules
 import { AppRoutingModule } from './app.routes';
 import { AuthModule } from './auth';
+import { DashboardModule } from './dashboard';
 // Import app components
 import { AppComponent } from './app.component';
 import { NoContentComponent } from './no-content';
@@ -23,7 +24,8 @@ import { NoContentComponent } from './no-content';
     MaterialModule,
     // Import our custom App modules
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
