@@ -1,0 +1,13 @@
+<div class="" layout="row" layout-wrap>
+  <h3>My Devices</h3>
+  <hr>
+  <div flex="25" *ngFor='let device of devices'>
+      <md-card>
+        <md-card-title>{{device.name}}</md-card-title>
+        <md-card-content>
+            hello device details
+        </md-card-content>
+        <a routerLink="/signup">SHOW CHANNELS</a>
+      </md-card>
+  </div>
+</div>
