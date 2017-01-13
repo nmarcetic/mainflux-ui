@@ -21,7 +21,7 @@ import { NoContentComponent } from './no-content';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
+    MaterialModule.forRoot(),
     // Import our custom App modules
     AppRoutingModule,
     AuthModule,
