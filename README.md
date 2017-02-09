@@ -50,9 +50,7 @@ This will run and assemble our  app.
 
 ### Community
 #### Mailing lists
-- [mainflux-dev][google-dev] - developers related. Discussions about development of Mainflux IoT itself.
-- [mainflux-user][google-user] - general discussion and support. If you do not participate in development
-    of Mainflux cloud infrastructure, this is probably what you're looking for.
+Visit [mainflux][google-group] official mailing list.
 
 #### IRC
 [Mainflux Gitter][gitter]
@@ -64,7 +62,6 @@ This will run and assemble our  app.
 [Apache License, version 2.0](LICENSE)
 
 [wiki]: https://github.com/Mainflux/mainflux/wiki
-[google-dev]: https://groups.google.com/forum/#!forum/mainflux-dev
-[google-user]: https://groups.google.com/forum/#!forum/mainflux-user
+[google-group]: https://groups.google.com/forum/#!forum/mainflux
 [twitter]: https://twitter.com/mainflux
 [gitter]: https://gitter.im/Mainflux/mainflux?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
