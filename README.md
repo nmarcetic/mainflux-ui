@@ -21,7 +21,7 @@ You'll need the following software installed to get started.
 Clone this repository
 
 ```bash
-git clone git@github.com:mainflux/mainflux-ui.git
+git clone https://github.com/mainflux/mainflux-ui
 ```
 
 Change into the directory.
