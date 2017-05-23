@@ -5,6 +5,8 @@
 
 Mainflux UI, dashboard for [Mainflux](https://github.com/mainflux/mainflux) Industrial IoT Messaging and Device Management Server.
 
+> **N.B.** Mainflux UI service is WIP and not suitable for deployment at this moment. You are welcome to contribute and improve it.
+
 ### Details
 To find out more about the Mainflux IoT, please see our [wiki][wiki].
 
