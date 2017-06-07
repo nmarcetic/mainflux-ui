@@ -11,6 +11,7 @@ import { DashboardModule } from './dashboard';
 // Import app components
 import { AppComponent } from './app.component';
 import { NoContentComponent } from './no-content';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NoContentComponent } from './no-content';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    BrowserAnimationsModule,
+    MaterialModule,
     // Import our custom App modules
     AppRoutingModule,
     AuthModule,
