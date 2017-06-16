@@ -13,7 +13,7 @@ export class DeviceService {
      // Resolve HTTP using the constructor
      constructor (private http: Http) {}
      // private instance variable to hold base url
-     private apiUrl = 'http://a3demo.mainflux.com/api/devices';
+     private apiUrl = 'http://localhost:9090/devices';
 
      // Fetch all devices
      getDevices() : Observable<Device[]> {
