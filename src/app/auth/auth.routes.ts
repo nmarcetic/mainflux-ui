@@ -5,7 +5,8 @@ import { SignupComponent } from './signup';
 
 // Define our Auth Routes
 const routes: Routes = [
-  { path: '',  component: LoginComponent},
+  // Temporary disable root path, while we work without Auth 
+  //{ path: '',  component: LoginComponent},
   { path: 'login',  component: LoginComponent},
   { path: 'signup',  component: SignupComponent },
 ];
