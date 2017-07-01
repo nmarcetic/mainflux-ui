@@ -12,11 +12,12 @@ To find out more about the Mainflux IoT, please see our [wiki][wiki].
 
 ### Requirements
 You'll need the following software installed to get started.
-- [Node](https://nodejs.org/en/) 4  or higher, together with NPM 3 or higher
-- [Angular-cli](https://github.com/angular/angular-cli) Newst version with Webpack integration.
+- [Node](https://nodejs.org/en/) 6  or higher, we recommend current LTS version, together with NPM 3 or higher.
+- [Angular-cli](https://github.com/angular/angular-cli) Newst version with Webpack integration (current version is 1.1.0).
 - - Depending on how Node is configured on your machine, you may need to run `sudo npm install
 - [Git](http://git-scm.com/downloads): Use the installer for your OS.
     - Windows users can also try [Git for Windows](http://git-for-windows.github.io/).
+- For local Development with [Mainflux composition](https://github.com/mainflux/mainflux) running localy, [Chrome extension for Cross origin](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-app-launcher-info-dialog) is required. Because composition is running on different port then our Angular app, we have cross origin.
 
 ## Get Started
 
