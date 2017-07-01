@@ -5,7 +5,7 @@ import {Device} from '../device.model';
 @Component({
   selector: 'my-device-list',
   templateUrl: './device-list.component.html',
-  styleUrls: ['./device-list.component.sass']
+  styleUrls: ['./device-list.component.scss']
 })
 export class DeviceListComponent implements OnInit {
 
