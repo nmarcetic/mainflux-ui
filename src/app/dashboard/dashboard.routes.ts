@@ -4,7 +4,8 @@ import { MainDashboardComponent } from './main';
 
 // Define our Auth Routes
 const routes: Routes = [
-  { path: 'dashboard',  component: MainDashboardComponent},
+  // Temporary set /dashboard as root path
+  { path: '',  component: MainDashboardComponent},
 ];
 
 @NgModule({
