@@ -7,7 +7,8 @@ import { DashboardRoutingModule } from './dashboard.routes';
 import {DeviceService} from './services/device.service';
 // Components
 import { MainDashboardComponent } from './main';
-import {DeviceListComponent} from './devices/device-list/device-list.component';
+import {DeviceListComponent} from './devices/list/device-list.component';
+import {DeviceDeleteComponent} from './devices/delete/device.delete.component';
 import {DashboardSideNavComponent} from './sidenav/dashboard-sidenav.component';
 
 @NgModule({
@@ -16,6 +17,7 @@ import {DashboardSideNavComponent} from './sidenav/dashboard-sidenav.component';
         // Components
         MainDashboardComponent,
         DeviceListComponent,
+        DeviceDeleteComponent,
         DashboardSideNavComponent,
     ],
     providers: [
