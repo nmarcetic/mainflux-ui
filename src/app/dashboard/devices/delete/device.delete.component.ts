@@ -22,7 +22,7 @@ export class DeviceDeleteComponent {
 
     public openDialog() {
     this.dialogService
-      .confirm('Confirm Action', 'Are you sure you want to delete device ?')
+      .confirm('Confirm Action', `Are you sure you want to delete device ${this.device.name} ?`)
       .subscribe(res => {
           this.result = res
           if(this.result) {
