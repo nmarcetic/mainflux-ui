@@ -22,14 +22,13 @@ export class DeviceDeleteComponent {
 
     public openDialog() {
     this.dialogService
-      .confirm('Confirm Actiion', 'Are you sure you want to delete device ?')
+      .confirm('Confirm Action', 'Are you sure you want to delete device ?')
       .subscribe(res => {
           this.result = res
           if(this.result) {
               this.DeviceService.removeDevice(this.device.id).subscribe(
                    response => {
-                       // Emit list event
-                      // EmitterService.get(this.listId).emit(comments);
+                       //TODO: Emit delete event
                       console.log("Deleted", response);
                    },
                    err => {

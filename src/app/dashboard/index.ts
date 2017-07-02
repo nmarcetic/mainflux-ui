@@ -8,6 +8,7 @@ import {DeviceService} from './services/device.service';
 // Components
 import { MainDashboardComponent } from './main';
 import {DeviceListComponent} from './devices/list/device-list.component';
+import {DeviceCreateComponent} from './devices/create/device-create.component';
 import {DeviceDeleteComponent} from './devices/delete/device.delete.component';
 import {DashboardSideNavComponent} from './sidenav/dashboard-sidenav.component';
 
@@ -17,6 +18,7 @@ import {DashboardSideNavComponent} from './sidenav/dashboard-sidenav.component';
         // Components
         MainDashboardComponent,
         DeviceListComponent,
+        DeviceCreateComponent,
         DeviceDeleteComponent,
         DashboardSideNavComponent,
     ],

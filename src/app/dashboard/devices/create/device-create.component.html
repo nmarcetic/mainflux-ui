@@ -1,0 +1,49 @@
+<h3>New Device</h3>
+<form class="userForm">
+  <md-input-container class="firstName">
+    <input
+      md-input
+      placeholder="First Name"
+      [(ngModel)]="first_name"
+      name="first_name"
+      type="text"
+      required
+      >
+  </md-input-container>
+
+  <md-input-container class="lastName">
+    <input
+      md-input
+      placeholder="Last Name"
+      [(ngModel)]="last_name"
+      name="last_name"
+      type="text"
+      required
+      >
+  </md-input-container>
+
+  <br>
+
+  <md-input-container class="email">
+    <input
+      md-input
+      placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
+      type="email"
+      required
+      >
+  </md-input-container>
+
+  <br>
+
+  <div class="userActionButtonGroup">
+    <button md-icon-button md-mini-fab color="accent" (click)="editUser()">
+      <md-icon  class="material-icons">done</md-icon>
+    </button>
+    <button md-icon-button md-mini-fab color="warn" md-dialog-close>
+      <md-icon  class="material-icons">cancel</md-icon>
+    </button>
+  </div>
+
+</form>
