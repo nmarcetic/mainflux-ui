@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 import { MaterialModule } from '@angular/material';
 
-import { DialogConfirmModule } from './dialog-confirm/dialog-confirm.module';
+import { DialogConfirmModule } from './components/dialog-confirm/dialog-confirm.module';
 
 @NgModule({
     imports: [CommonModule, FormsModule, MaterialModule, DialogConfirmModule],

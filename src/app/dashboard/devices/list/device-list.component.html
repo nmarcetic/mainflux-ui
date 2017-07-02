@@ -10,7 +10,7 @@
         <md-card-actions>
             <button *ngIf="device.channels.length > 0" md-button>SHOW CHANNELS</button>
             <button md-button>EDIT</button>
-            <device-delete></device-delete>
+            <device-delete [device]="device"></device-delete>
         </md-card-actions>
       </md-card>
   </div>

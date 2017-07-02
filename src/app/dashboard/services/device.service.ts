@@ -21,9 +21,14 @@ export class DeviceService {
          return this.http.get(this.apiUrl)
                         // ...and calling .json() on the response to return data
                          .map((res:Response) => res.json())
-                         //...errors if any
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
      }
+     // Delete device
+     removeDevice (id:string): Observable<Device[]> {
+        return this.http.delete(this.apiUrl + '/' + id)
+                         .map((res:Response) => res.json())
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
 
 }
