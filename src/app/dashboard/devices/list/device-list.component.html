@@ -1,16 +1,18 @@
-<div class="" layout="row" layout-wrap>
-  <h3>My Devices <button md-fab ><md-icon>add</md-icon></button></h3>
-
-  <hr>
-  <div flex="50" flex-xs="100" *ngFor='let device of devices'>
+<h3>My Devices <button md-fab ><md-icon>add</md-icon></button></h3>
+<hr>
+<div class="md-paddin" layout="row" layout-wrap>
+    <div flex *ngFor='let device of devices'>
       <md-card>
         <md-card-title>{{device.name}}</md-card-title>
         <md-card-content>
-            channels: {{device.channels.length}}
+            <span *ngIf="device.description">{{device.description}}</span>
+            <!-- channels: {{device.channels.length}} -->
         </md-card-content>
         <md-card-actions>
-            <button *ngIf="device.channels.length > 0" md-button>SHOW CHANNELS</button>
-            <button md-button>EDIT</button>
+            <!-- <button *ngIf="device.channels.length > 0" md-button>SHOW CHANNELS</button> -->
+            <button md-mini-fab  md-button color="primary">
+                <md-icon>mode_edit</md-icon>
+            </button>
             <device-delete [device]="device"></device-delete>
         </md-card-actions>
       </md-card>

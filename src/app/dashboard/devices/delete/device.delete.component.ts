@@ -6,8 +6,10 @@ import {DeviceService} from '../../services/device.service';
   selector: 'device-delete',
   providers: [DialogConfirmService],
   template:
-  `<button type="button" md-button
-      (click)="openDialog()">DELETE</button>`
+  `<button md-mini-fab color="warn" type="button" md-button
+      (click)="openDialog()">
+      <md-icon>delete_forever</md-icon>
+     </button>`
 })
 
 export class DeviceDeleteComponent {
