@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { DashboardRoutingModule } from './dashboard.routes';
 // Services
 import {DeviceService} from './services/device.service';
@@ -13,7 +14,7 @@ import {DeviceDeleteComponent} from './devices/delete/device.delete.component';
 import {DashboardSideNavComponent} from './sidenav/dashboard-sidenav.component';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, MaterialModule, DashboardRoutingModule],
+    imports: [CommonModule, FormsModule, MaterialModule, DashboardRoutingModule, FlexLayoutModule],
     declarations: [
         // Components
         MainDashboardComponent,

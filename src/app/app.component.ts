@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Dashflux a UI for Mainflux!';
+  title = 'Dashflux';
 }
