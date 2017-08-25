@@ -9,6 +9,7 @@ import 'hammerjs';
 import { AppRoutingModule } from './app.routes';
 import { AuthModule } from './auth';
 import { DashboardModule } from './dashboard';
+import {AppCommonModule} from './common/common.module';
 // Import app components
 import { AppComponent } from './app.component';
 import { NoContentComponent } from './no-content';
@@ -28,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // Import our custom App modules
     AppRoutingModule,
     AuthModule,
-    DashboardModule
+    DashboardModule,
+    AppCommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,23 @@
-<md-toolbar color="primary">
-  {{title}}
-</md-toolbar>
-<main>
+<md-sidenav-container fullscreen>
+  <md-sidenav mode="side" opened="false" #sidenav class="app-sidenav">
+    <md-toolbar color="primary">Mainflux Logo</md-toolbar>
+    <h5>Sidenav data goes here...</h5>
+  </md-sidenav>
+  <div class="main-content">
+    <md-toolbar color="primary">
+      <div fxLayout="row" fxLayoutAlign="start stretch">
+        <span><button md-button (click)="sidenav.toggle()"><md-icon>menu</md-icon></button></span>
+      </div>
+      <span><h2>{{title}}</h2></span>
+      <div id="right_nav" fxLayout="row" fxLayoutAlign="end">
+        <span><button md-button><md-icon>add</md-icon> Create</button></span>
+        <span><button md-button><md-icon>help</md-icon></button></span>
+        <span><button md-button><md-icon>alarm</md-icon></button></span>
+        <span><button md-button><md-icon>face</md-icon></button></span>
+      </div>
+    </md-toolbar>
+  </div>
+  <main>
     <router-outlet></router-outlet>
-</main>
+  </main>
+</md-sidenav-container>

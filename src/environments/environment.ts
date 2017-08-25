@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  API_URL : 'http://a3demo.mainflux.com/api'
+  API_URL : 'http://localhost:3000'
 };
