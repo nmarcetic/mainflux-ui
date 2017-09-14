@@ -1,5 +1,5 @@
 import {DialogConfirmService} from '../../../common/components/dialog-confirm/dialog-confirm.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import {DeviceService} from '../../services/device.service';
 
 @Component({
@@ -14,6 +14,7 @@ import {DeviceService} from '../../services/device.service';
 
 export class DeviceDeleteComponent {
     @Input() device;
+    @Output() deleted: EventEmitter<any> = new EventEmitter();
 
     public result: any;
 
@@ -23,6 +24,7 @@ export class DeviceDeleteComponent {
     ) {}
 
     public openDialog() {
+        console.log("to delete", this.device)
     this.dialogService
       .confirm('Confirm Action', `Are you sure you want to delete device ${this.device.name} ?`)
       .subscribe(res => {
@@ -31,7 +33,7 @@ export class DeviceDeleteComponent {
               this.DeviceService.removeDevice(this.device.id).subscribe(
                    response => {
                        //TODO: Emit delete event
-                      console.log("Deleted", response);
+                      this.deleted.emit(this.device);
                    },
                    err => {
                        // Log errors if any

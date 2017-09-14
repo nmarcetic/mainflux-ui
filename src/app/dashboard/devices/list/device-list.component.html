@@ -1,14 +1,17 @@
 <div class="containerX">
     <div fxLayout="row wrap" class="">
         <div class="" fxFlex="95%">
-            <h3>My Devices</h3>
+            <h3 *ngIf="devices && devices.length > 0">My Devices</h3>
         </div>
         <div class="" fxFlex="5%">
-            <button md-fab><md-icon>add</md-icon></button>
+            <button (click)="addDevice()" md-fab ><md-icon>add</md-icon></button>
         </div>
         <hr>
     </div>
   <div fxLayout="row wrap" class="colored box nopad">
+      <div fxFlex="100%"  *ngIf="devices && devices.length < 1" class="no-device-container center">
+          <h3 >It looks like you don't have any device in your account.</h3>
+      </div>
     <div fxFlex="33.33%" *ngFor='let device of devices'>
       <md-card class="device-card">
         <md-card-title>{{device.name}}</md-card-title>
@@ -18,10 +21,10 @@
         </md-card-content>
         <md-card-actions>
           <!-- <button *ngIf="device.channels.length > 0" md-button>SHOW CHANNELS</button> -->
-          <button md-mini-fab md-button color="primary">
+          <button md-mini-fab md-button color="primary" (click)="updateDevice(device)">
                   <md-icon>mode_edit</md-icon>
               </button>
-          <device-delete [device]="device"></device-delete>
+          <device-delete [device]="device" (deleted)="onDeviceDeleted(device)"></device-delete>
         </md-card-actions>
       </md-card>
     </div>
