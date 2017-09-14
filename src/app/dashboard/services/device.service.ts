@@ -1,7 +1,7 @@
 // Imports
 import { Injectable }     from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Device }           from '../devices/device.model';
+import { Device } from '../devices/device.interface';
 import { environment } from '../../../environments/environment';
 import {Observable} from 'rxjs/Rx';
 
@@ -31,6 +31,12 @@ export class DeviceService {
      // Delete device
      removeDevice (id:string): Observable<Device[]> {
         return this.http.delete(`${environment.API_URL}/clients/${id}`)
+                         .map((res:Response) => res.json())
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+     // Delete device
+     updateDevice (id:string, data): Observable<Device[]> {
+        return this.http.put(`${environment.API_URL}/clients/${id}`, data)
                          .map((res:Response) => res.json())
                          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }

@@ -20,6 +20,5 @@ export class MainDashboardComponent {
   }
 
   ngOnInit() {
-    console.log('hello `Main Dashboard` component');
   }
 }
