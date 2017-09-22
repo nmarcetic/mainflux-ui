@@ -20,11 +20,11 @@
           <!-- channels: {{device.channels.length}} -->
         </md-card-content>
         <md-card-actions>
-          <!-- <button *ngIf="device.channels.length > 0" md-button>SHOW CHANNELS</button> -->
           <button md-mini-fab md-button color="primary" (click)="updateDevice(device)">
                   <md-icon>mode_edit</md-icon>
               </button>
           <device-delete [device]="device" (deleted)="onDeviceDeleted(device)"></device-delete>
+          <button md-button>5 ACTIVE CHANNELS</button>
         </md-card-actions>
       </md-card>
     </div>

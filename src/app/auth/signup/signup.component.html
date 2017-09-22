@@ -4,12 +4,12 @@
       <md-card>
         <md-card-title>SIGN UP</md-card-title>
         <md-card-content>
-          <form>
+          <form (ngSubmit)="signup()">
             <table cellspacing="0">
               <tr>
                 <td>
                   <md-input-container style="width: 100%">
-                        <input mdInput placeholder="Username" name="Username" style="width: 100%">
+                        <input mdInput placeholder="Email" name="email" style="width: 100%" [(ngModel)]="model.email">
                   </md-input-container>
                 </td>
               </tr>
@@ -18,7 +18,7 @@
                 <tr>
                     <td>
                         <md-input-container style="width: 100%">
-                            <input mdInput placeholder="Password" name="Password" style="width: 100%">
+                            <input mdInput type="password" placeholder="Password" name="password" style="width: 100%" [(ngModel)]="model.password">
                         </md-input-container>
                     </td>
                 </tr>

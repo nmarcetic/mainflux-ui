@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NoContentComponent } from './no-content';
-import { AuthModule } from './auth';
+import { AuthenticationModule } from './auth';
 import { DashboardModule } from './dashboard';
 
 // Define our Application Routes
@@ -11,7 +11,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [AuthModule, DashboardModule, RouterModule.forRoot(routes, {useHash: false})],
+    imports: [AuthenticationModule, DashboardModule, RouterModule.forRoot(routes, {useHash: false})],
     exports: [RouterModule],
 })
 
