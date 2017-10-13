@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { DashfluxMaterialModule } from "../common/modules/dashflux.material.module";
 import { DashboardRoutingModule } from './dashboard.routes';
 // Services
 import {DeviceService} from './services/device.service';
@@ -19,9 +19,10 @@ import {DashboardSideNavComponent} from './sidenav/dashboard-sidenav.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        MaterialModule,
         DashboardRoutingModule,
-        FlexLayoutModule],
+        FlexLayoutModule,
+        DashfluxMaterialModule,
+    ],
     declarations: [
         // Components
         MainDashboardComponent,

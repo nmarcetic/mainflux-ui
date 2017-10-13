@@ -1,25 +1,28 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/auth.service';
 
 @Component({
-  // The selector is what angular internally uses
-  // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'home'
-  selector: 'signup-form',  // <home></home>
+  selector: 'signup-form',
   templateUrl: './signup.component.html',
   styleUrls: [ './signup.component.scss' ],
-  // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
   ],
 })
 export class SignupComponent {
-  // Set our default values
-  localState = { value: '' };
-  // TypeScript public modifiers
-  constructor() {
-
-  }
+  model: any = {};
+  constructor(
+    private router: Router,
+    private authService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     console.log('hello `Signup` component');
   }
+
+  public signup() {
+    this.authService
+     .signup(this.model)
+     .subscribe(() => this.router.navigateByUrl('/dashboard'));
+    }
 }
