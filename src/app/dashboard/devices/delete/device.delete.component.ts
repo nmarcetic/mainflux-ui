@@ -6,9 +6,9 @@ import {DeviceService} from '../../services/device.service';
   selector: 'device-delete',
   providers: [DialogConfirmService],
   template:
-  `<button md-mini-fab color="warn" type="button" md-button
+  `<button mat-mini-fab color="warn" type="button" mat-button
       (click)="openDialog()">
-      <md-icon>delete_forever</md-icon>
+      <mat-icon>delete_forever</mat-icon>
      </button>`
 })
 

@@ -1,33 +1,33 @@
 <div class="signup-container" layout="row">
   <div flex>
     <div layout="column" class="md-inline-form">
-      <md-card>
-        <md-card-title>SIGN UP</md-card-title>
-        <md-card-content>
+      <mat-card>
+        <mat-card-title>SIGN UP</mat-card-title>
+        <mat-card-content>
           <form (ngSubmit)="signup()">
             <table cellspacing="0">
               <tr>
                 <td>
-                  <md-input-container style="width: 100%">
-                        <input mdInput placeholder="Email" name="email" style="width: 100%" [(ngModel)]="model.email">
-                  </md-input-container>
+                  <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Email" name="email" style="width: 100%" [(ngModel)]="model.email">
+                  </mat-form-field>
                 </td>
               </tr>
             </table>
             <table cellspacing="0">
                 <tr>
                     <td>
-                        <md-input-container style="width: 100%">
-                            <input mdInput type="password" placeholder="Password" name="password" style="width: 100%" [(ngModel)]="model.password">
-                        </md-input-container>
+                        <mat-form-field style="width: 100%">
+                            <input matInput type="password" placeholder="Password" name="password" style="width: 100%" [(ngModel)]="model.password">
+                        </mat-form-field>
                     </td>
                 </tr>
             </table>
-            <button md-raised-button color="primary" class="large-button">SIGN UP</button>
+            <button mat-raised-button color="primary" class="large-button">SIGN UP</button>
           </form>
-    </md-card-content>
+    </mat-card-content>
         <a routerLink="/login">LOGIN</a>
-    </md-card>
+    </mat-card>
 </div>
   </div>
 </div>

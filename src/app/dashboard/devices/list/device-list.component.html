@@ -4,7 +4,7 @@
             <h3 *ngIf="devices && devices.length > 0">My Devices</h3>
         </div>
         <div class="" fxFlex="5%">
-            <button (click)="addDevice()" md-fab ><md-icon>add</md-icon></button>
+            <button (click)="addDevice()" mat-fab ><mat-icon>add</mat-icon></button>
         </div>
         <hr>
     </div>
@@ -13,20 +13,20 @@
           <h3 >It looks like you don't have any device in your account.</h3>
       </div>
     <div fxFlex="33.33%" *ngFor='let device of devices'>
-      <md-card class="device-card">
-        <md-card-title>{{device.name}}</md-card-title>
-        <md-card-content>
+      <mat-card class="device-card">
+        <mat-card-title>{{device.name}}</mat-card-title>
+        <mat-card-content>
           <span *ngIf="device.description">{{device.description}}</span>
           <!-- channels: {{device.channels.length}} -->
-        </md-card-content>
-        <md-card-actions>
-          <button md-mini-fab md-button color="primary" (click)="updateDevice(device)">
-                  <md-icon>mode_edit</md-icon>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-mini-fab mat-button color="primary" (click)="updateDevice(device)">
+                  <mat-icon>mode_edit</mat-icon>
               </button>
           <device-delete [device]="device" (deleted)="onDeviceDeleted(device)"></device-delete>
-          <button md-button>5 ACTIVE CHANNELS</button>
-        </md-card-actions>
-      </md-card>
+          <button mat-button>5 ACTIVE CHANNELS</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 </div>
