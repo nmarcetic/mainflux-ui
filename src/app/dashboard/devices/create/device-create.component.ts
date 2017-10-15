@@ -1,6 +1,6 @@
 import { Component, Inject, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { MdDialog, MdDialogRef} from '@angular/material';
+import { MatDialog, MatDialogRef} from '@angular/material';
 
 import {DeviceService} from '../../services/device.service';
 import {Device} from '../device.interface';
@@ -16,13 +16,13 @@ export class DeviceCreateComponent {
     public form: FormGroup;
     public submitted: boolean; // keep track on whether form is submitted
     public events: any[] = []; // use later to display form changes
-    private dialogRef: MdDialogRef<DeviceCreateComponent>;
+    private dialogRef: MatDialogRef<DeviceCreateComponent>;
     @Output()
     created: EventEmitter<any> = new EventEmitter();
 
     constructor(
         private DeviceService: DeviceService,
-        public dialog: MdDialogRef<DeviceCreateComponent>,
+        public dialog: MatDialogRef<DeviceCreateComponent>,
         private fb: FormBuilder
        ){
         }

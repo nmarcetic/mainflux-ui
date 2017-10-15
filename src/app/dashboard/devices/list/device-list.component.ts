@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, } from '@angular/core';
 import {DeviceService} from '../../services/device.service';
 import {Device} from '../device.interface';
 import _ from 'lodash';
-import { MdSnackBar, MdDialogRef, MdDialog } from '@angular/material';
+import { MatSnackBar, MatDialogRef, MatDialog } from '@angular/material';
 import { DeviceCreateComponent } from '../create/device-create.component';
 import { DeviceUpdateComponent } from '../update/device-update.component';
 
@@ -12,8 +12,8 @@ import { DeviceUpdateComponent } from '../update/device-update.component';
   styleUrls: ['./device-list.component.scss'],
 })
 export class DeviceListComponent implements OnInit {
-    dialogCreateRef: MdDialogRef<DeviceCreateComponent>;
-    dialogUpdateRef: MdDialogRef<DeviceUpdateComponent>;
+    dialogCreateRef: MatDialogRef<DeviceCreateComponent>;
+    dialogUpdateRef: MatDialogRef<DeviceUpdateComponent>;
     devices: Device[];
     messageDeleted: string = 'Device successfully deleted.';
     messageUpdated: string = 'Device successfully updated.';
@@ -21,8 +21,8 @@ export class DeviceListComponent implements OnInit {
 
   constructor(
       private service:DeviceService,
-      public snackBar: MdSnackBar,
-      public dialog: MdDialog
+      public snackBar: MatSnackBar,
+      public dialog: MatDialog
   ){}
 
   addDevice() {

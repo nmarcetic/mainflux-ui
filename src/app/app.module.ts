@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from "@angular/common/http";
+import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
 import 'hammerjs';
 
 // Import app custom modules
@@ -35,7 +36,7 @@ import { DashfluxMaterialModule } from './common/modules/dashflux.material.modul
     DashboardModule,
     AppCommonModule,
   ],
-  providers: [],
+  providers: [{provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

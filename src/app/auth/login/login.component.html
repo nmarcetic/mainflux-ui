@@ -1,33 +1,33 @@
 <div class="login-container" layout="row">
   <div flex>
     <div layout="column" class="md-inline-form">
-      <md-card>
-        <md-card-title>LOGIN</md-card-title>
-        <md-card-content>
+      <mat-card>
+        <mat-card-title>LOGIN</mat-card-title>
+        <mat-card-content>
           <form>
             <table cellspacing="0">
               <tr>
                 <td>
-                      <md-input-container style="width: 100%">
-                          <input mdInput placeholder="Username" name="Username" style="width: 100%">
-                      </md-input-container>
+                      <mat-form-field style="width: 100%">
+                          <input matInput placeholder="Username" name="Username" style="width: 100%">
+                      </mat-form-field>
                 </td>
               </tr>
             </table>
             <table cellspacing="0">
                 <tr>
                     <td>
-                        <md-input-container style="width: 100%">
-                            <input mdInput placeholder="Password" name="Password" style="width: 100%">
-                        </md-input-container>
+                        <mat-form-field style="width: 100%">
+                            <input matInput placeholder="Password" name="Password" style="width: 100%">
+                        </mat-form-field>
                     </td>
                 </tr>
             </table>
-            <button md-raised-button color="primary" class="large-button">LOGIN</button>
+            <button mat-raised-button color="primary" class="large-button">LOGIN</button>
           </form>
-    </md-card-content>
+    </mat-card-content>
     <a routerLink="/signup">CREATE ACCOUNT</a>
-    </md-card>
+    </mat-card>
 </div>
   </div>
 </div>
