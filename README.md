@@ -24,13 +24,13 @@ You'll need the following software installed to get started.
 Clone this repository
 
 ```bash
-git clone https://github.com/mainflux/mainflux-ui
+git clone https://github.com/mainflux/dashflux
 ```
 
 Change into the directory.
 
 ```bash
-cd mainflux-ui
+cd dashflux
 ```
 
 Install the dependencies. If you're running Mac OS or Linux, you may need to run `sudo npm install` instead, depending on how your machine is configured.
