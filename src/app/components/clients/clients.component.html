@@ -1,0 +1,16 @@
+<div class="clientsContainer" fxLayout="row" fxLayoutWrap>
+  <ng-container [ngSwitch]="(clients | async).length > 0">
+    <ng-container *ngSwitchCase="true">
+      <ng-container *ngFor="let client of clients | async">
+        <app-client-card class="clientCard" fxFlex.gt-sm="28%" fxFlex.sm="42%" fxFlex.xs="90%" [client]="client" (delete)="deleteClient(client)"></app-client-card>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <h3 >It looks like you don't have any device in your account.</h3>
+    </ng-container>
+  </ng-container>
+</div>
+
+<button mat-mini-fab class="addButton" (click)="addClient()">
+  <mat-icon>add</mat-icon>
+</button>
