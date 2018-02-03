@@ -17,7 +17,7 @@ export class AuthenticationService implements AuthService {
   constructor(
     private http: HttpClient,
     private tokenStorage: TokenStorage
-  ) {}
+  ) { }
 
   /**
    * Check, if user already authorized.
@@ -25,7 +25,7 @@ export class AuthenticationService implements AuthService {
    * @returns {Observable<boolean>}
    * @memberOf AuthService
    */
-  public isAuthorized(): Observable < boolean > {
+  public isAuthorized(): Observable<boolean> {
     return this.tokenStorage
       .getAccessToken()
       .map(token => !!token);
@@ -43,7 +43,7 @@ export class AuthenticationService implements AuthService {
    * localStorage
    * @returns {Observable<string>}
    */
-  public getAccessToken(): Observable < string > {
+  public getAccessToken(): Observable<string> {
     return this.tokenStorage.getAccessToken();
   }
 
@@ -53,7 +53,7 @@ export class AuthenticationService implements AuthService {
    * can execute pending requests or retry original one
    * @returns {Observable<any>}
    */
-  public refreshToken(): Observable < AccessData > {
+  public refreshToken(): Observable<AccessData> {
     return this.tokenStorage
       .getRefreshToken()
       .switchMap((refreshToken: string) => {
@@ -100,6 +100,20 @@ export class AuthenticationService implements AuthService {
 
         if (error.status === 403) {
           message = 'Wrong password or email';
+        } else {
+          message = 'Server side error';
+        }
+
+        return Observable.throw(message);
+      });
+  }
+
+  public signup(payload): Observable<any> {
+    return this.http.post(environment.signupUrl, payload)
+      .catch((error) => {
+        let message = '';
+        if (error.status === 409) {
+          message = 'Already existing email address';
         } else {
           message = 'Server side error';
         }

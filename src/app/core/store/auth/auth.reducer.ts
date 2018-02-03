@@ -18,7 +18,7 @@ export function reducer(
         case AuthActionTypes.SIGNUP_ERROR:
             return {
                 ...state,
-                authError: action.payload.error.message,
+                authError: action.payload.error,
                 timestamp: Date.now()
             };
         case AuthActionTypes.SIGNUP_SUCCESS:

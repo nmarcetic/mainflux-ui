@@ -8,16 +8,12 @@ import { GoAction } from '../store/router/router.actions';
 
 import { environment } from '../../../environments/environment';
 import { LoginAction, LoginErrorAction, LoginSuccessAction, SignupErrorAction, SignupSuccessAction } from '../store/auth';
-import { MockAuthService } from '../services/mock-auth.service';
-
 import { AuthenticationService } from '../services/auth/authentication.service';
-
 
 @Injectable()
 export class AuthEffects {
     constructor(
         private actions$: Actions,
-        private authService: MockAuthService,
         private authenticationService: AuthenticationService
     ) { }
     @Effect()
@@ -25,8 +21,10 @@ export class AuthEffects {
         .ofType(AuthActionTypes.SIGNUP)
         .map(toPayload)
         .switchMap(payload => {
-            return this.authService.signup(payload)
-                .map(user => new SignupSuccessAction(user))
+            return this.authenticationService.signup(payload)
+                .map(user => {
+                    return new SignupSuccessAction(payload);
+                })
                 .catch(error => {
                     return of(new SignupErrorAction({ error: error }))  ;
                 } );
@@ -46,8 +44,7 @@ export class AuthEffects {
             return this.authenticationService.login(payload)
                 .map(user => new LoginSuccessAction(user))
                 .catch(error => {
-                    console.log(error);
-                    return of(new LoginErrorAction({ error: error }))
+                    return of(new LoginErrorAction({ error: error }));
                 });
         });
 
