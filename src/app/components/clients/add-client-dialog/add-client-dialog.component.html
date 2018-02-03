@@ -1,6 +1,7 @@
 <form [formGroup]="addClientForm" (ngSubmit)="onAddClient()">
   <h1 mat-dialog-title>Add client</h1>
   <div mat-dialog-content fxLayout="column">
+    <input type="hidden" formControlName="id">
     <mat-form-field>
       <mat-select placeholder="Client type" formControlName="type">
         <mat-option value="app">

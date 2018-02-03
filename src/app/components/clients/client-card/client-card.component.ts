@@ -11,6 +11,7 @@ import { EventEmitter } from '@angular/core';
 export class ClientCardComponent implements OnInit {
   @Input() client: Client;
   @Output() delete: EventEmitter<any> = new EventEmitter();
+  @Output() edit: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -19,5 +20,9 @@ export class ClientCardComponent implements OnInit {
 
   onDelete() {
     this.delete.emit();
+  }
+
+  onEdit() {
+    this.edit.emit();
   }
 }

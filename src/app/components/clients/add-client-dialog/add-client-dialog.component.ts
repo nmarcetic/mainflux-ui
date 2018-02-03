@@ -1,5 +1,6 @@
+import { MAT_DIALOG_DATA } from '@angular/material';
 import { Client } from '../../../core/store/clients';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -13,24 +14,33 @@ import { MatDialogRef } from '@angular/material';
 })
 export class AddClientDialogComponent implements OnInit {
   addClientForm: FormGroup;
-  @Output() addClient: EventEmitter<Client> = new EventEmitter<Client>();
+  @Output() submit: EventEmitter<Client> = new EventEmitter<Client>();
 
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddClientDialogComponent>) { }
+  constructor(
+    private fb: FormBuilder,
+    private dialogRef: MatDialogRef<AddClientDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Client
+  ) { }
 
   ngOnInit() {
     this.addClientForm = this.fb.group(
       {
+        id: [''],
         type: ['', [Validators.required]],
         name: ['', [Validators.required, Validators.minLength(5)]]
       }
     );
+
+    if (this.data) {
+      this.addClientForm.patchValue(this.data);
+    }
   }
 
   onAddClient() {
-    let client = this.addClientForm.value;
+    const client = this.addClientForm.value;
     client.meta = {};
 
-    this.addClient.emit(client);
+    this.submit.emit(client);
     this.dialogRef.close();
   }
 }

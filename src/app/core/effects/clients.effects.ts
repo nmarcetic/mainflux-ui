@@ -45,4 +45,15 @@ export class ClientsEffects {
                     return of(new GetClientsAction());
                 });
         });
+
+    @Effect()
+    editClient: Observable<Action> = this.actions$
+        .ofType(ClientsActionTypes.EDIT_CLIENT)
+        .map(toPayload)
+        .switchMap(client => {
+            return this.clientsService.editClient(client)
+                .switchMap(() => {
+                    return of(new GetClientsAction());
+                });
+        });
 }

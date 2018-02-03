@@ -11,6 +11,9 @@ export enum ClientsActionTypes {
     DELETE_CLIENT = '[Clients] DELETE_CLIENT',
     DELETE_CLIENT_SUCCESS = '[Clients] DELETE_CLIENT_SUCCESS',
     DELETE_CLIENT_ERROR = '[Clients] DELETE_CLIENT_ERROR',
+    EDIT_CLIENT = '[Clients] EDIT_CLIENT',
+    EDIT_CLIENT_SUCCESS = '[Clients] EDIT_CLIENT_SUCCESS',
+    EDIT_CLIENT_ERROR = '[Clients] EDIT_CLIENT_ERROR',
 }
 
 export class GetClientsAction implements Action {
@@ -67,6 +70,24 @@ export class DeleteClientErrorAction implements Action {
     constructor(public payload?) { }
 }
 
+export class EditClientAction implements Action {
+    readonly type = ClientsActionTypes.EDIT_CLIENT;
+
+    constructor(public payload: Client) { }
+}
+
+export class EditClientSuccessAction implements Action {
+    readonly type = ClientsActionTypes.EDIT_CLIENT_SUCCESS;
+
+    constructor(public payload?) { }
+}
+
+export class EditClientErrorAction implements Action {
+    readonly type = ClientsActionTypes.EDIT_CLIENT_ERROR;
+
+    constructor(public payload?) { }
+}
+
 export type ClientsActions
                         = GetClientsAction
                         | GetClientsSuccessAction
@@ -76,4 +97,7 @@ export type ClientsActions
                         | AddClientErrorAction
                         | DeleteClientAction
                         | DeleteClientSuccessAction
-                        | DeleteClientErrorAction;
+                        | DeleteClientErrorAction
+                        | EditClientAction
+                        | EditClientSuccessAction
+                        | EditClientErrorAction;

@@ -1,4 +1,4 @@
-import { AddClientAction, DeleteClientAction } from '../../core/store/clients';
+import { AddClientAction, DeleteClientAction, EditClientAction } from '../../core/store/clients';
 import { getClients, State } from '../../core/store/index.reducer';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -31,8 +31,18 @@ export class ClientsComponent implements OnInit {
   addClient() {
     const dialogRef = this.dialog.open(AddClientDialogComponent);
 
-    dialogRef.componentInstance.addClient.subscribe((client: Client) => {
+    dialogRef.componentInstance.submit.subscribe((client: Client) => {
       this.store.dispatch(new AddClientAction(client));
+    });
+  }
+
+  editClient(client: Client) {
+    const dialogRef = this.dialog.open(AddClientDialogComponent, {
+      data: client
+    });
+
+    dialogRef.componentInstance.submit.subscribe((editedClient: Client) => {
+      this.store.dispatch(new EditClientAction(editedClient));
     });
   }
 

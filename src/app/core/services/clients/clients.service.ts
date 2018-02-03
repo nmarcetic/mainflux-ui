@@ -21,4 +21,8 @@ export class ClientsService {
   deleteClient(client: Client) {
     return this.http.delete(environment.clientsUrl + '/' + client.id);
   }
+
+  editClient(client: Client) {
+    return this.http.put(environment.clientsUrl + '/' + client.id, client);
+  }
 }
