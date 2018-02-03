@@ -3,10 +3,12 @@ import { AuthActions, AuthActionTypes } from './auth.actions';
 export interface State {
     authError: string;
     timestamp: number;
+    authenticated: boolean;
 }
 
 const initialState: State = {
     authError: '',
+    authenticated: false,
     timestamp: Date.now()
 };
 

@@ -53,4 +53,12 @@ export class AuthEffects {
         .ofType(AuthActionTypes.LOGIN_SUCCESS)
         .map(toPayload)
         .switchMap(user => of(new GoAction({ path: ['/clients']})));
+
+    @Effect()
+    logout: Observable<Action> = this.actions$
+        .ofType(AuthActionTypes.LOGOUT)
+        .map(toPayload)
+        .do(() => this.authenticationService.logout())
+        .switchMap(() => of(new GoAction({ path: ['/login']})));
+
 }

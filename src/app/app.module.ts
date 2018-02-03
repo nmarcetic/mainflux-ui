@@ -28,6 +28,10 @@ import { TokenStorage } from './core/services/auth/token-storage.service';
 import { AuthenticationService } from './core/services/auth/authentication.service';
 import { PROTECTED_FALLBACK_PAGE_URI, PUBLIC_FALLBACK_PAGE_URI, AUTH_SERVICE } from 'ngx-auth';
 import { AuthModule } from 'ngx-auth';
+import { MockChannelsService } from './core/services/mock-channels.service';
+import { ChannelCardComponent } from './components/channels/channel-card/channel-card.component';
+import { ChannelsService } from './core/services/channels/channels.service';
+import { AddChannelDialogComponent } from './components/channels/add-channel-dialog/add-channel-dialog.component';
 
 export function factory(authenticationService: AuthenticationService) {
   return authenticationService;
@@ -43,6 +47,8 @@ export function factory(authenticationService: AuthenticationService) {
     AddClientDialogComponent,
     ClientCardComponent,
     ConfirmationDialogComponent,
+    ChannelCardComponent,
+    AddChannelDialogComponent,
   ],
   imports: [
     AuthModule,
@@ -59,7 +65,9 @@ export function factory(authenticationService: AuthenticationService) {
   providers: [
     MockAuthService,
     MockClientsService,
+    MockChannelsService,
     ClientsService,
+    ChannelsService,
     TokenStorage,
     AuthenticationService,
     { provide: PROTECTED_FALLBACK_PAGE_URI, useValue: '/' },
@@ -73,6 +81,7 @@ export function factory(authenticationService: AuthenticationService) {
   bootstrap: [AppComponent],
   entryComponents: [
     AddClientDialogComponent,
+    AddChannelDialogComponent,
     ConfirmationDialogComponent
   ]
 })

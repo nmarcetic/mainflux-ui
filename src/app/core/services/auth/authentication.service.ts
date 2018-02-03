@@ -127,7 +127,6 @@ export class AuthenticationService implements AuthService {
    */
   public logout(): void {
     this.tokenStorage.clear();
-    location.reload(true);
   }
 
   /**

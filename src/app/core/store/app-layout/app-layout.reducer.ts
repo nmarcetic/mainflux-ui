@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { AuthActions, AuthActionTypes } from '../auth';
 import { ClientsActions, ClientsActionTypes } from '../clients/index';
+import { ChannelsActions, ChannelsActionTypes} from '../channels/index';
 
 export interface State {
     loading: boolean;
@@ -12,7 +13,7 @@ const initialState: State = {
 
 export function reducer(
     state: State = initialState,
-    action: AuthActions | ClientsActions
+    action: AuthActions | ClientsActions | ChannelsActions
 ) {
     switch (action.type) {
         case AuthActionTypes.SIGNUP:

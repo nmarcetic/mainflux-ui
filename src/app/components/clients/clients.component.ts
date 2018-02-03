@@ -47,13 +47,16 @@ export class ClientsComponent implements OnInit {
   }
 
   deleteClient(client: Client) {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        question: 'Are you sure you want to delete the client?'
+      }
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.store.dispatch(new DeleteClientAction(client));
       }
     });
-
   }
 }

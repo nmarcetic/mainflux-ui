@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { ClientsEffects } from './clients.effects';
 import { RouterEffects } from './router.effects';
 import { AuthEffects } from './auth.effects';
+import { ChannelsEffects } from './channels.effects';
 
 
 @NgModule({
   imports: [
-    EffectsModule.forRoot([ClientsEffects, RouterEffects, AuthEffects])
+    EffectsModule.forRoot([ClientsEffects, ChannelsEffects, RouterEffects, AuthEffects])
   ],
   declarations: []
 })
