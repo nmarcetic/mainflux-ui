@@ -13,7 +13,7 @@ To find out more about the Mainflux IoT, please see our [wiki][wiki].
 ### Requirements
 You'll need the following software installed to get started.
 - [Node](https://nodejs.org/en/) 6  or higher, we recommend current LTS version, together with NPM 3 or higher.
-- [Angular-cli](https://github.com/angular/angular-cli) Newst version with Webpack integration (current version is 1.1.0).
+- [Angular-cli](https://github.com/angular/angular-cli) Newst version with Webpack integration
 - - Depending on how Node is configured on your machine, you may need to run `sudo npm install
 - [Git](http://git-scm.com/downloads): Use the installer for your OS.
     - Windows users can also try [Git for Windows](http://git-for-windows.github.io/).
@@ -38,6 +38,8 @@ Install the dependencies. If you're running Mac OS or Linux, you may need to run
 ```bash
 npm install
 ```
+
+Set the appropriate endpoint URL's in environment.ts (for local development will probably be 0.0.0.0:<port>)
 
 To start the server, run:
 

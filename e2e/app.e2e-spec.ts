@@ -1,14 +1,14 @@
-import { MainfluxUiPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('mainflux-ui App', function() {
-  let page: MainfluxUiPage;
+describe('mainflux-ui App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new MainfluxUiPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

@@ -1,42 +1,88 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { HttpClientModule } from "@angular/common/http";
-import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CoreStoreModule } from './core/store/core-store.module';
+import { CoreEffectsModule } from './core/effects/core-effects.module';
+import { MaterialModule } from './core/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import './rxjs-extensions.ts';
 import 'hammerjs';
 
-// Import app custom modules
-import { AppRoutingModule } from './app.routes';
-import { AuthenticationModule } from './auth';
-import { DashboardModule } from './dashboard';
-import {AppCommonModule} from './common/common.module';
-// Import app components
-import { AppComponent } from './app.component';
-import { NoContentComponent } from './no-content';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// Import custom material module (check material documentation)
-import { DashfluxMaterialModule } from './common/modules/dashflux.material.module';
+import { ChannelsComponent } from './components/channels/channels.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { MockAuthService } from './core/services/mock-auth.service';
+import { MockClientsService } from './core/services/mock-clients.service';
+import { ClientsService } from './core/services/clients/clients.service';
+import { LoginComponent } from './components/auth/login/login.component';
+import { AddClientDialogComponent } from './components/clients/add-client-dialog/add-client-dialog.component';
+import { ClientCardComponent } from './components/clients/client-card/client-card.component';
+import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TokenStorage } from './core/services/auth/token-storage.service';
+import { AuthenticationService } from './core/services/auth/authentication.service';
+import { PROTECTED_FALLBACK_PAGE_URI, PUBLIC_FALLBACK_PAGE_URI, AUTH_SERVICE } from 'ngx-auth';
+import { AuthModule } from 'ngx-auth';
+import { MockChannelsService } from './core/services/mock-channels.service';
+import { ChannelCardComponent } from './components/channels/channel-card/channel-card.component';
+import { ChannelsService } from './core/services/channels/channels.service';
+import { AddChannelDialogComponent } from './components/channels/add-channel-dialog/add-channel-dialog.component';
+
+export function factory(authenticationService: AuthenticationService) {
+  return authenticationService;
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    NoContentComponent,
+    ClientsComponent,
+    ChannelsComponent,
+    SignupComponent,
+    LoginComponent,
+    AddClientDialogComponent,
+    ClientCardComponent,
+    ConfirmationDialogComponent,
+    ChannelCardComponent,
+    AddChannelDialogComponent,
   ],
   imports: [
+    AuthModule,
     BrowserModule,
-    FormsModule,
-    HttpModule,
-    HttpClientModule,
     BrowserAnimationsModule,
-    DashfluxMaterialModule,
-    // Import our custom App modules
     AppRoutingModule,
-    AuthenticationModule,
-    DashboardModule,
-    AppCommonModule,
+    HttpClientModule,
+    CoreStoreModule,
+    CoreEffectsModule,
+    MaterialModule,
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
-  providers: [{provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    MockAuthService,
+    MockClientsService,
+    MockChannelsService,
+    ClientsService,
+    ChannelsService,
+    TokenStorage,
+    AuthenticationService,
+    { provide: PROTECTED_FALLBACK_PAGE_URI, useValue: '/' },
+    { provide: PUBLIC_FALLBACK_PAGE_URI, useValue: '/login' },
+    {
+      provide: AUTH_SERVICE,
+      deps: [AuthenticationService],
+      useFactory: factory
+    }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddClientDialogComponent,
+    AddChannelDialogComponent,
+    ConfirmationDialogComponent
+  ]
 })
 export class AppModule { }

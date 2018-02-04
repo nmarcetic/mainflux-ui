@@ -1,23 +1,14 @@
-<mat-sidenav-container fullscreen>
-  <mat-sidenav mode="side" opened="false" #sidenav class="app-sidenav">
-    <mat-toolbar color="primary">Mainflux Logo</mat-toolbar>
-    <h5>Sidenav data goes here...</h5>
-  </mat-sidenav>
-  <div class="main-content">
-    <mat-toolbar color="primary">
-      <div fxLayout="row" fxLayoutAlign="start stretch">
-        <span><button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button></span>
-      </div>
-      <span><h2>{{title}}</h2></span>
-      <div id="right_nav" fxLayout="row" fxLayoutAlign="end">
-        <span><button mat-button><mat-icon>add</mat-icon> Create</button></span>
-        <span><button mat-button><mat-icon>help</mat-icon></button></span>
-        <span><button mat-button><mat-icon>alarm</mat-icon></button></span>
-        <span><button mat-button><mat-icon>face</mat-icon></button></span>
-      </div>
-    </mat-toolbar>
-  </div>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-</mat-sidenav-container>
+<div class="loading" *ngIf="loading | async" fxLayoutAlign="center center">
+    <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</div>
+
+<mat-toolbar color="primary" class="mat-elevation-z6">
+    <h1 fxFlex>Mainflux</h1>
+    <ng-container *ngIf="isAuthenticated | async">
+        <a [routerLink]="['/clients']" mat-button>Clients</a>
+        <a [routerLink]="['/channels']" mat-button>Channels</a>
+        <a (click)="logout()" mat-button>Logout</a>
+    </ng-container>
+
+</mat-toolbar>
+<router-outlet></router-outlet>

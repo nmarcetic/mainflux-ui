@@ -11,16 +11,32 @@
 # IDEs and editors
 /.idea
 /.vscode
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
 .project
 .classpath
 .c9/
 *.launch
 .settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
 /connect.lock
 /coverage/*
+/coverage
 /libpeerconnection.log
 npm-debug.log
 testem.log
@@ -37,3 +53,6 @@ Thumbs.db
 #json-server database
 db.json
 db.*
+# System Files
+.DS_Store
+Thumbs.db

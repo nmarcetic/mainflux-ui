@@ -1,0 +1,16 @@
+<div class="channelsContainer" fxLayout="row" fxLayoutWrap>
+  <ng-container [ngSwitch]="(channels | async).length > 0">
+    <ng-container *ngSwitchCase="true">
+      <ng-container *ngFor="let channel of channels | async">
+        <app-channel-card class="channelCard" fxFlex.gt-sm="28%" fxFlex.sm="42%" fxFlex.xs="90%" [channel]="channel" (edit)="editChannel(channel)" (delete)="deleteChannel(channel)"></app-channel-card>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <h3>It looks like you don't have any channels in your account.</h3>
+    </ng-container>
+  </ng-container>
+</div>
+
+<button mat-mini-fab class="addButton" (click)="addChannel()">
+  <mat-icon>add</mat-icon>
+</button>
