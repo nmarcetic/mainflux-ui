@@ -1,7 +1,10 @@
-import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Channel } from '../../../core/store/channels/index';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { toJS } from 'mobx';
+
+import { Channel } from '../../../core/store/models';
+import { State } from '../../../core/store/state';
 
 @Component({
   selector: 'app-add-channel-dialog',
@@ -9,26 +12,27 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./add-channel-dialog.component.scss']
 })
 export class AddChannelDialogComponent implements OnInit {
-
   addChannelForm: FormGroup;
   @Output() submit: EventEmitter<Channel> = new EventEmitter<Channel>();
 
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddChannelDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Channel
+    @Inject(MAT_DIALOG_DATA) public data: Channel,
+    public stateStore: State,
   ) { }
 
   ngOnInit() {
     this.addChannelForm = this.fb.group(
       {
         id: [''],
-        name: ['', [Validators.required, Validators.minLength(5)]]
+        name: ['', [Validators.required, Validators.minLength(5)]],
+        connected: ['']
       }
     );
 
     if (this.data) {
-      this.addChannelForm.patchValue(this.data);
+      this.addChannelForm.patchValue(toJS(this.data));
     }
   }
 

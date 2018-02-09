@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Channel } from '../../store/channels/index';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 import { environment } from '../../../../environments/environment';
+import { Channel } from '../../store/models';
 
 @Injectable()
 export class ChannelsService {

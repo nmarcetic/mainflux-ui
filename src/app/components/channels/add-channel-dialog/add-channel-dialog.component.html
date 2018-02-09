@@ -8,6 +8,11 @@
           Name is required
         </mat-error>
       </mat-form-field>
+      <mat-form-field>
+          <mat-select placeholder="Connected clients" formControlName="connected" multiple>
+            <mat-option *ngFor="let client of stateStore.clients" [value]="client.id">{{client.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
     </div>
     <div mat-dialog-actions>
       <button mat-button mat-dialog-close>Cancel</button>

@@ -3,6 +3,8 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
   MatDialogModule,
   MatIconModule,
   MatInputModule,
@@ -11,14 +13,12 @@ import {
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
   MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatCheckboxModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatChipsModule,
 } from '@angular/material';
 
 @NgModule({

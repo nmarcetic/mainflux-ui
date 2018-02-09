@@ -1,11 +1,8 @@
-import { MAT_DIALOG_DATA } from '@angular/material';
-import { Client } from '../../../core/store/clients';
-import { Component, OnInit, Output, Inject } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { EventEmitter } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
+import { Client } from '../../../core/store/models';
 
 @Component({
   selector: 'app-add-client-dialog',
@@ -27,18 +24,36 @@ export class AddClientDialogComponent implements OnInit {
       {
         id: [''],
         type: ['', [Validators.required]],
-        name: ['', [Validators.required, Validators.minLength(5)]]
+        name: ['', [Validators.required, Validators.minLength(5)]],
+        meta: ['', [this.validJson]]
       }
     );
 
     if (this.data) {
       this.addClientForm.patchValue(this.data);
+      this.addClientForm.get('meta').patchValue(JSON.stringify(this.data.meta));
     }
+  }
+
+  validJson(control: AbstractControl) {
+    if (control.value) {
+      try {
+        JSON.parse(control.value);
+      } catch (e) {
+        return { validJson: true};
+      }
+    }
+
+    return null;
   }
 
   onAddClient() {
     const client = this.addClientForm.value;
-    client.meta = {};
+    if (client.meta) {
+      client.meta = JSON.parse(client.meta);
+    } else {
+      client.meta = {};
+    }
 
     this.submit.emit(client);
     this.dialogRef.close();

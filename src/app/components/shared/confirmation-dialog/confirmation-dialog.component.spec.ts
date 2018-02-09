@@ -1,5 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialModule } from '../../../core/material/material.module';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
 describe('ConfirmationDialogComponent', () => {
@@ -8,7 +12,18 @@ describe('ConfirmationDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfirmationDialogComponent ]
+      declarations: [ ConfirmationDialogComponent ],
+      imports: [
+        MaterialModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule
+      ],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+      ]
     })
     .compileComponents();
   }));

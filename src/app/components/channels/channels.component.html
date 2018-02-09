@@ -1,7 +1,7 @@
 <div class="channelsContainer" fxLayout="row" fxLayoutWrap>
-  <ng-container [ngSwitch]="(channels | async).length > 0">
+  <ng-container [ngSwitch]="stateStore.channels.length > 0">
     <ng-container *ngSwitchCase="true">
-      <ng-container *ngFor="let channel of channels | async">
+      <ng-container *ngFor="let channel of stateStore.channels">
         <app-channel-card class="channelCard" fxFlex.gt-sm="28%" fxFlex.sm="42%" fxFlex.xs="90%" [channel]="channel" (edit)="editChannel(channel)" (delete)="deleteChannel(channel)"></app-channel-card>
       </ng-container>
     </ng-container>

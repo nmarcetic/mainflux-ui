@@ -22,6 +22,13 @@
         Name is required
       </mat-error>
     </mat-form-field>
+    <mat-form-field>
+      <textarea formControlName="meta" matInput placeholder="Meta data (JSON)" matTextareaAutosize matAutosizeMinRows="2"
+                matAutosizeMaxRows="5"></textarea>
+      <mat-error *ngIf="addClientForm.get('meta').errors?.validJson">
+          Meta must be a valid JSON
+        </mat-error>
+    </mat-form-field>
   </div>
   <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
