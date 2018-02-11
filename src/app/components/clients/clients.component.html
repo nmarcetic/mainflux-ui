@@ -1,7 +1,7 @@
 <div class="clientsContainer" fxLayout="row" fxLayoutWrap>
-  <ng-container [ngSwitch]="(clients | async).length > 0">
+  <ng-container [ngSwitch]="stateStore.clients.length > 0">
     <ng-container *ngSwitchCase="true">
-      <ng-container *ngFor="let client of clients | async">
+      <ng-container *ngFor="let client of stateStore.clients">
         <app-client-card class="clientCard" fxFlex.gt-sm="28%" fxFlex.sm="42%" fxFlex.xs="90%" [client]="client" (delete)="deleteClient(client)" (edit)="editClient(client)"></app-client-card>
       </ng-container>
     </ng-container>

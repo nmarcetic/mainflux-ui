@@ -1,13 +1,7 @@
-import { GoAction } from '../../../core/store/router';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { State, getAuthError} from '../../../core/store/index.reducer';
-import { AbstractControl } from '@angular/forms';
-import { ErrorStateMatcher, MatSnackBar } from '@angular/material';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { SignupAction } from '../../../core/store/auth';
+import { State } from '../../../core/store/state';
 
 @Component({
   selector: 'app-signup',
@@ -18,8 +12,8 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
 
   constructor(
-    private store: Store<State>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private stateStore: State,
   ) { }
 
   ngOnInit() {
@@ -43,13 +37,11 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    this.store.dispatch(new SignupAction(
-      this.getUserDataFromForm()
-    ));
+    this.stateStore.signup(this.getUserDataFromForm());
   }
 
   login() {
-    this.store.dispatch(new GoAction({path: ['/login']}));
+    this.stateStore.goToLogin();
   }
 
   getUserDataFromForm() {

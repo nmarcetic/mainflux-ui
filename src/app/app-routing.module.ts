@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
-import { PublicGuard, ProtectedGuard } from 'ngx-auth';
+import { ProtectedGuard, PublicGuard } from 'ngx-auth';
 
-import { ClientsComponent } from './components/clients/clients.component';
-import { ChannelsComponent } from './components/channels/channels.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { ChannelsComponent } from './components/channels/channels.component';
+import { ClientsComponent } from './components/clients/clients.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'clients', pathMatch: 'full'},

@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { toJS } from 'mobx';
 import { Observable } from 'rxjs/Observable';
 
-import { getClients, State } from '../../core/store/index.reducer';
-import { Store } from '@ngrx/store';
-import { MatDialog } from '@angular/material';
-import { getChannels } from '../../core/store/index.reducer';
-import { Channel } from '../../core/store/channels/channels.reducer';
-import { GetChannelsAction, AddChannelAction, EditChannelAction, DeleteChannelAction } from '../../core/store/channels/index';
-import { AddChannelDialogComponent } from './add-channel-dialog/add-channel-dialog.component';
+import { Channel } from '../../core/store/models';
+import { State as AppState } from '../../core/store/state';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
+import { AddChannelDialogComponent } from './add-channel-dialog/add-channel-dialog.component';
 
 @Component({
   selector: 'app-channels',
@@ -18,21 +16,21 @@ import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confi
 export class ChannelsComponent implements OnInit {
   channels: Observable<Channel[]>;
 
-  constructor(private store: Store<State>, private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    public stateStore: AppState,
+  ) { }
 
   ngOnInit() {
-    this.channels = this.store.select(getChannels);
-
-    setTimeout(() => {
-      this.store.dispatch(new GetChannelsAction());
-    });
+    this.stateStore.getChannels();
+    this.stateStore.getClients();
   }
 
   addChannel() {
     const dialogRef = this.dialog.open(AddChannelDialogComponent);
 
     dialogRef.componentInstance.submit.subscribe((channel: Channel) => {
-      this.store.dispatch(new AddChannelAction(channel));
+      this.stateStore.addChannel(channel);
     });
   }
 
@@ -42,7 +40,7 @@ export class ChannelsComponent implements OnInit {
     });
 
     dialogRef.componentInstance.submit.subscribe((editedChannel: Channel) => {
-      this.store.dispatch(new EditChannelAction(editedChannel));
+      this.stateStore.editChannel(toJS(editedChannel));
     });
   }
 
@@ -55,7 +53,7 @@ export class ChannelsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.store.dispatch(new DeleteChannelAction(channel));
+        this.stateStore.deleteChannel(channel);
       }
     });
   }

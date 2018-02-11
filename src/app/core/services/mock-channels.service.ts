@@ -1,7 +1,7 @@
-import { User } from '../store/auth';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Client } from '../store/clients/index';
+
+import { Client } from '../store/models';
 
 const MOCK_CHANNELS = {
   channels: [

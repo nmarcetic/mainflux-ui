@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { AuthService } from 'ngx-auth';
+import '../../../rxjs-extensions';
 
-import { TokenStorage } from './token-storage.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { AuthService } from 'ngx-auth';
+import { Observable } from 'rxjs/Observable';
+
 import { environment } from '../../../../environments/environment';
+import { TokenStorage } from './token-storage.service';
 
 
 interface AccessData {

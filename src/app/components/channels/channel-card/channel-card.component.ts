@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { Channel } from '../../../core/store/channels/index';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+import { Channel } from '../../../core/store/models';
 
 @Component({
   selector: 'app-channel-card',

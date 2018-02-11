@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Client } from '../../../core/store/clients/index';
-import { Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+import { Client } from '../../../core/store/models';
 
 @Component({
   selector: 'app-client-card',

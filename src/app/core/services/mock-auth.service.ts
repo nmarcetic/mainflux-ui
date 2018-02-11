@@ -1,6 +1,7 @@
-import { User } from '../store/auth';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+
+import { User } from '../store/models';
 
 export const MOCK_USER = {
   email: 'asdf@asdf.com',

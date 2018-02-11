@@ -1,37 +1,35 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { CoreStoreModule } from './core/store/core-store.module';
-import { CoreEffectsModule } from './core/effects/core-effects.module';
-import { MaterialModule } from './core/material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import './rxjs-extensions.ts';
 import 'hammerjs';
 
-import { ChannelsComponent } from './components/channels/channels.component';
-import { ClientsComponent } from './components/clients/clients.component';
-import { SignupComponent } from './components/auth/signup/signup.component';
-import { MockAuthService } from './core/services/mock-auth.service';
-import { MockClientsService } from './core/services/mock-clients.service';
-import { ClientsService } from './core/services/clients/clients.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MobxAngularModule } from 'mobx-angular';
+import { AUTH_SERVICE, AuthModule, PROTECTED_FALLBACK_PAGE_URI, PUBLIC_FALLBACK_PAGE_URI } from 'ngx-auth';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { AddChannelDialogComponent } from './components/channels/add-channel-dialog/add-channel-dialog.component';
+import { ChannelCardComponent } from './components/channels/channel-card/channel-card.component';
+import { ChannelsComponent } from './components/channels/channels.component';
 import { AddClientDialogComponent } from './components/clients/add-client-dialog/add-client-dialog.component';
 import { ClientCardComponent } from './components/clients/client-card/client-card.component';
+import { ClientsComponent } from './components/clients/clients.component';
 import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
-import { HttpClientModule } from '@angular/common/http';
-import { TokenStorage } from './core/services/auth/token-storage.service';
+import { MaterialModule } from './core/material/material.module';
 import { AuthenticationService } from './core/services/auth/authentication.service';
-import { PROTECTED_FALLBACK_PAGE_URI, PUBLIC_FALLBACK_PAGE_URI, AUTH_SERVICE } from 'ngx-auth';
-import { AuthModule } from 'ngx-auth';
-import { MockChannelsService } from './core/services/mock-channels.service';
-import { ChannelCardComponent } from './components/channels/channel-card/channel-card.component';
+import { TokenStorage } from './core/services/auth/token-storage.service';
 import { ChannelsService } from './core/services/channels/channels.service';
-import { AddChannelDialogComponent } from './components/channels/add-channel-dialog/add-channel-dialog.component';
+import { ClientsService } from './core/services/clients/clients.service';
+import { MockAuthService } from './core/services/mock-auth.service';
+import { MockChannelsService } from './core/services/mock-channels.service';
+import { MockClientsService } from './core/services/mock-clients.service';
+import { State } from './core/store/state';
 
 export function factory(authenticationService: AuthenticationService) {
   return authenticationService;
@@ -56,13 +54,13 @@ export function factory(authenticationService: AuthenticationService) {
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    CoreStoreModule,
-    CoreEffectsModule,
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MobxAngularModule
   ],
   providers: [
+    State,
     MockAuthService,
     MockClientsService,
     MockChannelsService,
