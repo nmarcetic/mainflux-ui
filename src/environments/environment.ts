@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  signupUrl: 'http://0.0.0.0:8180/users',
-  loginUrl: 'http://0.0.0.0:8180/tokens',
-  clientsUrl: 'http://0.0.0.0:8180/clients',
-  channelsUrl: 'http://0.0.0.0:8180/channels'
+  signupUrl: '/api/users',
+  loginUrl: '/api/tokens',
+  clientsUrl: '/api/clients',
+  channelsUrl: '/api/channels'
 };
