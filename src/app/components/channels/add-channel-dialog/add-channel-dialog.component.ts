@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { toJS } from 'mobx';
 
+import { ClientsStore } from '../../../core/store/clients.store';
 import { Channel } from '../../../core/store/models';
-import { State } from '../../../core/store/state';
 
 @Component({
   selector: 'app-add-channel-dialog',
@@ -19,7 +19,7 @@ export class AddChannelDialogComponent implements OnInit {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddChannelDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Channel,
-    public stateStore: State,
+    public clientsStore: ClientsStore,
   ) { }
 
   ngOnInit() {

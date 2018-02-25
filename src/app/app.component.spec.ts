@@ -8,7 +8,8 @@ import { AuthenticationService } from './core/services/auth/authentication.servi
 import { TokenStorage } from './core/services/auth/token-storage.service';
 import { ChannelsService } from './core/services/channels/channels.service';
 import { ClientsService } from './core/services/clients/clients.service';
-import { State } from './core/store/state';
+import { UiStore } from './core/store/ui.store';
+import { AuthStore } from './core/store/auth.store';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -22,7 +23,8 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       providers: [
-        State,
+        UiStore,
+        AuthStore,
         AuthenticationService,
         TokenStorage,
         ClientsService,

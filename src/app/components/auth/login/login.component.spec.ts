@@ -1,12 +1,15 @@
 import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MaterialModule } from '../../../core/material/material.module';
-import { State } from '../../../core/store/state';
+import { AuthenticationService } from '../../../core/services/auth/authentication.service';
+import { TokenStorage } from '../../../core/services/auth/token-storage.service';
 import { LoginComponent } from './login.component';
+import { UiStore } from '../../../core/store/ui.store';
+import { AuthStore } from '../../../core/store/auth.store';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -24,13 +27,10 @@ describe('LoginComponent', () => {
         NoopAnimationsModule
       ],
       providers: [
-        {
-          provide: State,
-          useClass: class {
-            login = jasmine.createSpy('login');
-            goToSignup = jasmine.createSpy('goToSignup');
-          }
-        }
+        UiStore,
+        AuthStore,
+        AuthenticationService,
+        TokenStorage,
       ]
     })
     .compileComponents();
@@ -46,14 +46,14 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call the store goToSignup when clicked on Sign Up with Email', () => {
+  it('should call the store goToSignup when clicked on Sign Up with Email', inject([UiStore], (store: UiStore) => {
     const signupButton = fixture.debugElement.nativeElement.querySelector('.signupButton');
-    const store = fixture.debugElement.injector.get(State);
+    const signupSpy = spyOn(store, 'goToSignup').and.stub();
 
     signupButton.click();
 
     fixture.detectChanges();
 
-    expect(store.goToSignup).toHaveBeenCalled();
-  });
+    expect(signupSpy).toHaveBeenCalled();
+  }));
 });

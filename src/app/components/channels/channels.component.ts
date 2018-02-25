@@ -4,9 +4,10 @@ import { toJS } from 'mobx';
 import { Observable } from 'rxjs/Observable';
 
 import { Channel } from '../../core/store/models';
-import { State as AppState } from '../../core/store/state';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { AddChannelDialogComponent } from './add-channel-dialog/add-channel-dialog.component';
+import { ClientsStore } from '../../core/store/clients.store';
+import { ChannelsStore } from '../../core/store/channels.store';
 
 @Component({
   selector: 'app-channels',
@@ -18,19 +19,20 @@ export class ChannelsComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    public stateStore: AppState,
+    public clientsStore: ClientsStore,
+    public channelsStore: ChannelsStore,
   ) { }
 
   ngOnInit() {
-    this.stateStore.getChannels();
-    this.stateStore.getClients();
+    this.channelsStore.getChannels();
+    this.clientsStore.getClients();
   }
 
   addChannel() {
     const dialogRef = this.dialog.open(AddChannelDialogComponent);
 
     dialogRef.componentInstance.submit.subscribe((channel: Channel) => {
-      this.stateStore.addChannel(channel);
+      this.channelsStore.addChannel(channel);
     });
   }
 
@@ -40,7 +42,7 @@ export class ChannelsComponent implements OnInit {
     });
 
     dialogRef.componentInstance.submit.subscribe((editedChannel: Channel) => {
-      this.stateStore.editChannel(toJS(editedChannel));
+      this.channelsStore.editChannel(toJS(editedChannel));
     });
   }
 
@@ -53,7 +55,7 @@ export class ChannelsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.stateStore.deleteChannel(channel);
+        this.channelsStore.deleteChannel(channel);
       }
     });
   }

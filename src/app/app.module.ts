@@ -29,7 +29,11 @@ import { ClientsService } from './core/services/clients/clients.service';
 import { MockAuthService } from './core/services/mock-auth.service';
 import { MockChannelsService } from './core/services/mock-channels.service';
 import { MockClientsService } from './core/services/mock-clients.service';
+import { ChannelsStore } from './core/store/channels.store';
+import { ClientsStore } from './core/store/clients.store';
 import { State } from './core/store/state';
+import { UiStore } from './core/store/ui.store';
+import { AuthStore } from './core/store/auth.store';
 
 export function factory(authenticationService: AuthenticationService) {
   return authenticationService;
@@ -60,7 +64,10 @@ export function factory(authenticationService: AuthenticationService) {
     MobxAngularModule
   ],
   providers: [
-    State,
+    UiStore,
+    ClientsStore,
+    ChannelsStore,
+    AuthStore,
     MockAuthService,
     MockClientsService,
     MockChannelsService,
