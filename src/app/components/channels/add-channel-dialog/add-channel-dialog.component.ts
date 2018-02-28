@@ -27,7 +27,7 @@ export class AddChannelDialogComponent implements OnInit {
       {
         id: [''],
         name: ['', [Validators.required, Validators.minLength(5)]],
-        connected: ['']
+        connected: [[]]
       }
     );
 
