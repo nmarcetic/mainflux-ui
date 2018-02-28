@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { State } from '../../../core/store/state';
+import { AuthStore } from '../../../core/store/auth.store';
+import { UiStore } from '../../../core/store/ui.store';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private stateStore: State,
+    private uiStore: UiStore,
+    private authStore: AuthStore,
   ) { }
 
   ngOnInit() {
@@ -37,11 +39,11 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    this.stateStore.signup(this.getUserDataFromForm());
+    this.authStore.signup(this.getUserDataFromForm());
   }
 
   login() {
-    this.stateStore.goToLogin();
+    this.uiStore.goToLogin();
   }
 
   getUserDataFromForm() {

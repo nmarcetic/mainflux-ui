@@ -7,10 +7,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MaterialModule } from '../../../core/material/material.module';
 import { AuthenticationService } from '../../../core/services/auth/authentication.service';
 import { TokenStorage } from '../../../core/services/auth/token-storage.service';
-import { ChannelsService } from '../../../core/services/channels/channels.service';
-import { ClientsService } from '../../../core/services/clients/clients.service';
-import { State } from '../../../core/store/state';
 import { SignupComponent } from './signup.component';
+import { AuthStore } from '../../../core/store/auth.store';
+import { UiStore } from '../../../core/store/ui.store';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -28,11 +27,10 @@ describe('SignupComponent', () => {
         NoopAnimationsModule
       ],
       providers: [
-        State,
+        UiStore,
+        AuthStore,
         AuthenticationService,
-        TokenStorage,
-        ClientsService,
-        ChannelsService,
+        TokenStorage
       ]
     })
     .compileComponents();

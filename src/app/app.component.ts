@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { reaction } from 'mobx';
 
-import { State } from './core/store/state';
+import { UiStore } from './core/store/ui.store';
+import { AuthStore } from './core/store/auth.store';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,12 @@ import { State } from './core/store/state';
 export class AppComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
-    public stateStore: State,
+    public uiStore: UiStore,
+    public authStore: AuthStore,
   ) { }
 
   ngOnInit() {
-    reaction(() => this.stateStore.authError, (authError) => {
+    reaction(() => this.authStore.authError, (authError) => {
       if (authError) {
         this.snackBar.open(authError, '', {
           duration: 3000
@@ -26,6 +28,6 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.stateStore.logout();
+    this.authStore.logout();
   }
 }

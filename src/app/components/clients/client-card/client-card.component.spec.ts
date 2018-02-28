@@ -10,7 +10,6 @@ import { AuthenticationService } from '../../../core/services/auth/authenticatio
 import { TokenStorage } from '../../../core/services/auth/token-storage.service';
 import { ChannelsService } from '../../../core/services/channels/channels.service';
 import { ClientsService } from '../../../core/services/clients/clients.service';
-import { State } from '../../../core/store/state';
 import { ClientCardComponent } from './client-card.component';
 
 describe('ClientCardComponent', () => {
@@ -30,7 +29,6 @@ describe('ClientCardComponent', () => {
         NoopAnimationsModule
       ],
       providers: [
-        State,
         AuthenticationService,
         TokenStorage,
         ClientsService,

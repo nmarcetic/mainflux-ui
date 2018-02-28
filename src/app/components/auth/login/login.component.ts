@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { State } from '../../../core/store/state';
+import { UiStore } from '../../../core/store/ui.store';
+import { AuthStore } from '../../../core/store/auth.store';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private stateStore: State,
+    private uiStore: UiStore,
+    private authStore: AuthStore,
   ) { }
 
   ngOnInit() {
@@ -24,11 +26,11 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.stateStore.login(this.getUserDataFromForm());
+    this.authStore.login(this.getUserDataFromForm());
   }
 
   signup() {
-    this.stateStore.goToSignup();
+    this.uiStore.goToSignup();
   }
 
   getUserDataFromForm() {

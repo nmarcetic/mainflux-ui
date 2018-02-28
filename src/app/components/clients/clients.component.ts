@@ -4,9 +4,10 @@ import { toJS } from 'mobx';
 import { Observable } from 'rxjs/Observable';
 
 import { Client } from '../../core/store/models';
-import { State } from '../../core/store/state';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { AddClientDialogComponent } from './add-client-dialog/add-client-dialog.component';
+import { ClientsStore } from '../../core/store/clients.store';
+import { ChannelsStore } from '../../core/store/channels.store';
 
 @Component({
   selector: 'app-clients',
@@ -17,20 +18,21 @@ export class ClientsComponent implements OnInit {
   clients: Observable<Client[]>;
 
   constructor(
-    private stateStore: State,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public clientsStore: ClientsStore,
+    public channelsStore: ChannelsStore,
   ) { }
 
   ngOnInit() {
-    this.stateStore.getClients();
-    this.stateStore.getChannels();
+    this.clientsStore.getClients();
+    this.channelsStore.getChannels();
   }
 
   addClient() {
     const dialogRef = this.dialog.open(AddClientDialogComponent);
 
     dialogRef.componentInstance.submit.subscribe((client: Client) => {
-      this.stateStore.addClient(client);
+      this.clientsStore.addClient(client);
     });
   }
 
@@ -40,7 +42,7 @@ export class ClientsComponent implements OnInit {
     });
 
     dialogRef.componentInstance.submit.subscribe((editedClient: Client) => {
-      this.stateStore.editClient(toJS(editedClient));
+      this.clientsStore.editClient(toJS(editedClient));
     });
   }
 
@@ -53,7 +55,7 @@ export class ClientsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.stateStore.deleteClient(toJS(client));
+        this.clientsStore.deleteClient(toJS(client));
       }
     });
   }
