@@ -21,6 +21,8 @@ export class ClientsStore {
             .subscribe((payload: any) => {
                 this.uiState.loading = false;
                 this.clients = payload.clients;
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 
@@ -31,6 +33,8 @@ export class ClientsStore {
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getClients();
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 
@@ -41,6 +45,8 @@ export class ClientsStore {
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getClients();
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 
@@ -51,6 +57,8 @@ export class ClientsStore {
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getClients();
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 }

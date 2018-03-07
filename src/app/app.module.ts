@@ -1,7 +1,7 @@
 import './rxjs-extensions.ts';
 import 'hammerjs';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +33,7 @@ import { ChannelsStore } from './core/store/channels.store';
 import { ClientsStore } from './core/store/clients.store';
 import { UiStore } from './core/store/ui.store';
 import { AuthStore } from './core/store/auth.store';
+import { UnauthorizedInterceptor } from './core/services/auth/unauthorized.interceptor';
 
 export function factory(authenticationService: AuthenticationService) {
   return authenticationService;
@@ -80,7 +81,8 @@ export function factory(authenticationService: AuthenticationService) {
       provide: AUTH_SERVICE,
       deps: [AuthenticationService],
       useFactory: factory
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   entryComponents: [

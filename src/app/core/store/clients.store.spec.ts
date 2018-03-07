@@ -56,12 +56,21 @@ describe('ClientsStore', () => {
 
                 expect(toJS(clientsStore.clients)).toEqual(serviceReturnValue.clients);
             }));
+
+        it('should set the loading flag to false after failed get', inject([ClientsStore, UiStore, ClientsService],
+            (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
+                const getClients = spyOn(clientsService, 'getClients').and.returnValue(Observable.throw(''));
+
+                clientsStore.getClients();
+
+                expect(uiStore.loading).toBeFalsy();
+            }));
     });
 
     describe('addClient', () => {
         it('should set the loading flag to true before service call', inject([ClientsStore, UiStore, ClientsService],
             (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'addClient').and.returnValue({ subscribe: () => { } });
+                const addClient = spyOn(clientsService, 'addClient').and.returnValue({ subscribe: () => { } });
                 const newClient: Client = {
                     name: 'new client',
                     type: 'app',
@@ -75,7 +84,7 @@ describe('ClientsStore', () => {
 
         it('should set the loading flag to false after successful service call', inject([ClientsStore, UiStore, ClientsService],
             (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'addClient').and.returnValue(Observable.of(true));
+                const addClient = spyOn(clientsService, 'addClient').and.returnValue(Observable.of(true));
                 const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
                 const newClient: Client = {
                     name: 'new client',
@@ -90,7 +99,7 @@ describe('ClientsStore', () => {
 
         it('should call the ClientsStore.getClients after successful add', inject([ClientsStore, ClientsService],
             (clientsStore: ClientsStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'addClient').and.returnValue(Observable.of(true));
+                const addClient = spyOn(clientsService, 'addClient').and.returnValue(Observable.of(true));
                 const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
 
                 const newClient: Client = {
@@ -103,12 +112,28 @@ describe('ClientsStore', () => {
 
                 expect(storeGetClientsSpy).toHaveBeenCalled();
             }));
+
+        it('should set the loading flag to false after failed add', inject([ClientsStore, UiStore, ClientsService],
+            (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
+                const addClient = spyOn(clientsService, 'addClient').and.returnValue(Observable.throw(''));
+                const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
+
+                const newClient: Client = {
+                    name: 'new client',
+                    type: 'app',
+                    meta: '',
+                };
+
+                clientsStore.addClient(newClient);
+
+                expect(uiStore.loading).toBeFalsy();
+            }));
     });
 
     describe('editClient', () => {
         it('should set the loading flag to true before service call', inject([ClientsStore, UiStore, ClientsService],
             (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'editClient').and.returnValue({ subscribe: () => { } });
+                const editClient = spyOn(clientsService, 'editClient').and.returnValue({ subscribe: () => { } });
                 const editedClient: Client = {
                     name: 'edited client',
                     type: 'app',
@@ -122,7 +147,7 @@ describe('ClientsStore', () => {
 
         it('should set the loading flag to false after successful service call', inject([ClientsStore, UiStore, ClientsService],
             (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'editClient').and.returnValue(Observable.of(true));
+                const editClient = spyOn(clientsService, 'editClient').and.returnValue(Observable.of(true));
                 const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
                 const editedClient: Client = {
                     name: 'edited client',
@@ -135,9 +160,9 @@ describe('ClientsStore', () => {
                 expect(uiStore.loading).toBeFalsy();
             }));
 
-        it('should call the ClientsStore.getChannels after successful add', inject([ClientsStore, UiStore, ClientsService],
+        it('should call the ClientsStore.getChannels after successful edit', inject([ClientsStore, UiStore, ClientsService],
             (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'editClient').and.returnValue(Observable.of(true));
+                const editClient = spyOn(clientsService, 'editClient').and.returnValue(Observable.of(true));
                 const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
 
                 const editedClient: Client = {
@@ -151,12 +176,28 @@ describe('ClientsStore', () => {
 
                 expect(storeGetClientsSpy).toHaveBeenCalled();
             }));
+
+        it('should set the loading flag to false after failed edit', inject([ClientsStore, UiStore, ClientsService],
+            (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
+                const editClient = spyOn(clientsService, 'editClient').and.returnValue(Observable.throw(''));
+                const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
+
+                const editedClient: Client = {
+                    name: 'edited client',
+                    type: 'app',
+                    meta: '',
+                };
+
+                clientsStore.editClient(editedClient);
+
+                expect(uiStore.loading).toBeFalsy();
+            }));
     });
 
     describe('deleteClient', () => {
         it('should set the loading flag to true before service call', inject([ClientsStore, UiStore, ClientsService],
             (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'deleteClient').and.returnValue({ subscribe: () => { } });
+                const deleteClient = spyOn(clientsService, 'deleteClient').and.returnValue({ subscribe: () => { } });
                 const clientToBeDeleted: Client = {
                     name: 'clientToBeDeleted',
                     type: 'app',
@@ -170,7 +211,7 @@ describe('ClientsStore', () => {
 
         it('should set the loading flag to false after successful service call', inject([ClientsStore, UiStore, ClientsService],
             (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'deleteClient').and.returnValue(Observable.of(true));
+                const deleteClient = spyOn(clientsService, 'deleteClient').and.returnValue(Observable.of(true));
                 const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
                 const clientToBeDeleted: Client = {
                     name: 'clientToBeDeleted',
@@ -186,7 +227,7 @@ describe('ClientsStore', () => {
 
         it('should call the clientsStore.getChannels after successful add', inject([ClientsStore, ClientsService],
             (clientsStore: ClientsStore, clientsService: ClientsService) => {
-                const getChannels = spyOn(clientsService, 'deleteClient').and.returnValue(Observable.of(true));
+                const deleteClient = spyOn(clientsService, 'deleteClient').and.returnValue(Observable.of(true));
                 const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
 
                 const clientToBeDeleted: Client = {
@@ -198,6 +239,22 @@ describe('ClientsStore', () => {
                 clientsStore.deleteClient(clientToBeDeleted);
 
                 expect(storeGetClientsSpy).toHaveBeenCalled();
+            }));
+
+        it('should set the loading flag to false after failed delete', inject([ClientsStore, UiStore, ClientsService],
+            (clientsStore: ClientsStore, uiStore: UiStore, clientsService: ClientsService) => {
+                const deleteClient = spyOn(clientsService, 'deleteClient').and.returnValue(Observable.throw(''));
+                const storeGetClientsSpy = spyOn(clientsStore, 'getClients').and.stub();
+                const clientToBeDeleted: Client = {
+                    name: 'clientToBeDeleted',
+                    type: 'app',
+                    meta: ''
+                };
+
+
+                clientsStore.deleteClient(clientToBeDeleted);
+
+                expect(uiStore.loading).toBeFalsy();
             }));
     });
 });

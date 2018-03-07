@@ -21,6 +21,8 @@ export class ChannelsStore {
             .subscribe((payload: any) => {
                 this.uiState.loading = false;
                 this.channels = payload.channels;
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 
@@ -31,6 +33,8 @@ export class ChannelsStore {
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getChannels();
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 
@@ -41,6 +45,8 @@ export class ChannelsStore {
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getChannels();
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 
@@ -51,6 +57,8 @@ export class ChannelsStore {
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getChannels();
+            }, () => {
+                this.uiState.loading = false;
             });
     }
 }
