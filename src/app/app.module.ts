@@ -15,10 +15,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { AddChannelDialogComponent } from './components/channels/add-channel-dialog/add-channel-dialog.component';
-import { ChannelCardComponent } from './components/channels/channel-card/channel-card.component';
 import { ChannelsComponent } from './components/channels/channels.component';
 import { AddClientDialogComponent } from './components/clients/add-client-dialog/add-client-dialog.component';
-import { ClientCardComponent } from './components/clients/client-card/client-card.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ConfirmationDialogComponent } from './components/shared/confirmation-dialog/confirmation-dialog.component';
 import { MaterialModule } from './core/material/material.module';
@@ -46,9 +44,7 @@ export function factory(authenticationService: AuthenticationService) {
     SignupComponent,
     LoginComponent,
     AddClientDialogComponent,
-    ClientCardComponent,
     ConfirmationDialogComponent,
-    ChannelCardComponent,
     AddChannelDialogComponent,
   ],
   imports: [
@@ -60,7 +56,7 @@ export function factory(authenticationService: AuthenticationService) {
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule,
-    MobxAngularModule
+    MobxAngularModule,
   ],
   providers: [
     UiStore,

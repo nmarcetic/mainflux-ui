@@ -10,7 +10,6 @@ import { AuthenticationService } from '../../core/services/auth/authentication.s
 import { TokenStorage } from '../../core/services/auth/token-storage.service';
 import { ChannelsService } from '../../core/services/channels/channels.service';
 import { ClientsService } from '../../core/services/clients/clients.service';
-import { ChannelCardComponent } from './channel-card/channel-card.component';
 import { ChannelsComponent } from './channels.component';
 import { ClientsStore } from '../../core/store/clients.store';
 import { UiStore } from '../../core/store/ui.store';
@@ -22,7 +21,7 @@ describe('ChannelsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChannelsComponent, ChannelCardComponent ],
+      declarations: [ ChannelsComponent ],
       imports: [
         MaterialModule,
         MatDialogModule,
@@ -30,7 +29,7 @@ describe('ChannelsComponent', () => {
         RouterTestingModule,
         FormsModule,
         ReactiveFormsModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
       ],
       providers: [
         {

@@ -16,6 +16,7 @@ import { ChannelsStore } from '../../core/store/channels.store';
 })
 export class ChannelsComponent implements OnInit {
   channels: Observable<Channel[]>;
+  displayedColumns = ['id', 'name', 'connected', 'actions'];
 
   constructor(
     private dialog: MatDialog,
