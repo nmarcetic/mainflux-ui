@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { action, observable } from 'mobx';
 
 import { ChannelsService } from '../services/channels/channels.service';
-import { Channel } from './models';
+import { Channel, Client } from './models';
 import { UiStore } from './ui.store';
+import { computed } from 'mobx-angular';
 
 @Injectable()
 export class ChannelsStore {
@@ -20,7 +21,7 @@ export class ChannelsStore {
         this.channelsService.getChannels()
             .subscribe((payload: any) => {
                 this.uiState.loading = false;
-                this.channels = payload.channels;
+                this.channels = payload;
             }, () => {
                 this.uiState.loading = false;
             });

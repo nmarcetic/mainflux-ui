@@ -23,10 +23,10 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea formControlName="meta" matInput placeholder="Meta data (JSON)" matTextareaAutosize matAutosizeMinRows="2"
+      <textarea formControlName="payload" matInput placeholder="Payload data (JSON)" matTextareaAutosize matAutosizeMinRows="2"
                 matAutosizeMaxRows="5"></textarea>
-      <mat-error *ngIf="addClientForm.get('meta').errors?.validJson">
-          Meta must be a valid JSON
+      <mat-error *ngIf="addClientForm.get('payload').errors?.validJson">
+          Payload must be a valid JSON
         </mat-error>
     </mat-form-field>
   </div>

@@ -8,7 +8,7 @@ export interface Client {
     id?: '';
     type: string;
     name: string;
-    meta: any;
+    payload: string;
 }
 
 export interface User {

@@ -16,7 +16,7 @@
             <ng-container matColumnDef="connected">
               <mat-header-cell fxFlex="30%" *matHeaderCellDef mat-sort-header>Connected</mat-header-cell>
               <mat-cell fxFlex="30%" *matCellDef="let row">
-                <li *ngFor="let item of row.connected"> {{item}} </li>
+                <li *ngFor="let item of row.connected"> {{item.id}} </li>
               </mat-cell>
             </ng-container>
             <!-- Actions -->

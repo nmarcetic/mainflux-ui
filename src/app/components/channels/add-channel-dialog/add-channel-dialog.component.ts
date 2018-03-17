@@ -14,6 +14,7 @@ import { Channel } from '../../../core/store/models';
 export class AddChannelDialogComponent implements OnInit {
   addChannelForm: FormGroup;
   @Output() submit: EventEmitter<Channel> = new EventEmitter<Channel>();
+  editMode: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -26,13 +27,16 @@ export class AddChannelDialogComponent implements OnInit {
     this.addChannelForm = this.fb.group(
       {
         id: [''],
-        name: ['', [Validators.required, Validators.minLength(5)]],
+        name: [''],
         connected: [[]]
       }
     );
 
     if (this.data) {
+      this.editMode = true;
       this.addChannelForm.patchValue(toJS(this.data));
+    } else {
+      this.editMode = false;
     }
   }
 
@@ -43,5 +47,4 @@ export class AddChannelDialogComponent implements OnInit {
     this.submit.emit(channel);
     this.dialogRef.close();
   }
-
 }

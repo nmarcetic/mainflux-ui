@@ -12,7 +12,7 @@ import { ChannelsStore } from '../../core/store/channels.store';
 @Component({
   selector: 'app-channels',
   templateUrl: './channels.component.html',
-  styleUrls: ['./channels.component.scss']
+  styleUrls: ['./channels.component.scss'],
 })
 export class ChannelsComponent implements OnInit {
   channels: Observable<Channel[]>;
