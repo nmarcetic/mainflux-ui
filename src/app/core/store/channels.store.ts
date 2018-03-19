@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { action, observable } from 'mobx';
 
 import { ChannelsService } from '../services/channels/channels.service';
-import { Channel, Client } from './models';
+import { Channel } from './models';
 import { UiStore } from './ui.store';
-import { computed } from 'mobx-angular';
 
 @Injectable()
 export class ChannelsStore {
@@ -40,15 +39,19 @@ export class ChannelsStore {
     }
 
     @action
-    editChannel(channel: Channel) {
+    editChannel(editedChannel: Channel) {
         this.uiState.loading = true;
-        this.channelsService.editChannel(channel)
+        this.channelsService.editChannel(editedChannel, this.getChannelById(editedChannel.id))
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getChannels();
             }, () => {
                 this.uiState.loading = false;
             });
+    }
+
+    private getChannelById(id: string) {
+        return this.channels.find(ch => ch.id === id);
     }
 
     @action
