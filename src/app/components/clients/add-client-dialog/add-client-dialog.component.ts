@@ -25,7 +25,7 @@ export class AddClientDialogComponent implements OnInit {
         id: [''],
         type: ['', [Validators.required]],
         name: ['', [Validators.required, Validators.minLength(5)]],
-        payload: ['', [this.validJson]]
+        payload: ['']
       }
     );
 
@@ -33,18 +33,6 @@ export class AddClientDialogComponent implements OnInit {
       this.addClientForm.patchValue(this.data);
       this.addClientForm.get('payload').patchValue(JSON.stringify(this.data.payload));
     }
-  }
-
-  validJson(control: AbstractControl) {
-    if (control.value) {
-      try {
-        JSON.parse(control.value);
-      } catch (e) {
-        return { validJson: true};
-      }
-    }
-
-    return null;
   }
 
   onAddClient() {
