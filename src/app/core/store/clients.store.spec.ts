@@ -74,7 +74,7 @@ describe('ClientsStore', () => {
                 const newClient: Client = {
                     name: 'new client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
                 clientsStore.addClient(newClient);
@@ -89,7 +89,7 @@ describe('ClientsStore', () => {
                 const newClient: Client = {
                     name: 'new client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
                 clientsStore.addClient(newClient);
@@ -105,7 +105,7 @@ describe('ClientsStore', () => {
                 const newClient: Client = {
                     name: 'new client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
                 clientsStore.addClient(newClient);
@@ -121,7 +121,7 @@ describe('ClientsStore', () => {
                 const newClient: Client = {
                     name: 'new client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
                 clientsStore.addClient(newClient);
@@ -137,7 +137,7 @@ describe('ClientsStore', () => {
                 const editedClient: Client = {
                     name: 'edited client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
                 clientsStore.editClient(editedClient);
@@ -152,7 +152,7 @@ describe('ClientsStore', () => {
                 const editedClient: Client = {
                     name: 'edited client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
                 clientsStore.editClient(editedClient);
@@ -168,7 +168,7 @@ describe('ClientsStore', () => {
                 const editedClient: Client = {
                     name: 'edited client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
 
@@ -185,7 +185,7 @@ describe('ClientsStore', () => {
                 const editedClient: Client = {
                     name: 'edited client',
                     type: 'app',
-                    meta: '',
+                    payload: '',
                 };
 
                 clientsStore.editClient(editedClient);
@@ -201,7 +201,7 @@ describe('ClientsStore', () => {
                 const clientToBeDeleted: Client = {
                     name: 'clientToBeDeleted',
                     type: 'app',
-                    meta: ''
+                    payload: ''
                 };
 
                 clientsStore.deleteClient(clientToBeDeleted);
@@ -216,7 +216,7 @@ describe('ClientsStore', () => {
                 const clientToBeDeleted: Client = {
                     name: 'clientToBeDeleted',
                     type: 'app',
-                    meta: ''
+                    payload: ''
                 };
 
 
@@ -233,7 +233,7 @@ describe('ClientsStore', () => {
                 const clientToBeDeleted: Client = {
                     name: 'clientToBeDeleted',
                     type: 'app',
-                    meta: ''
+                    payload: ''
                 };
 
                 clientsStore.deleteClient(clientToBeDeleted);
@@ -248,7 +248,7 @@ describe('ClientsStore', () => {
                 const clientToBeDeleted: Client = {
                     name: 'clientToBeDeleted',
                     type: 'app',
-                    meta: ''
+                    payload: ''
                 };
 
 

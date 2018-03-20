@@ -20,7 +20,7 @@ export class ChannelsStore {
         this.channelsService.getChannels()
             .subscribe((payload: any) => {
                 this.uiState.loading = false;
-                this.channels = payload.channels;
+                this.channels = payload;
             }, () => {
                 this.uiState.loading = false;
             });
@@ -39,15 +39,19 @@ export class ChannelsStore {
     }
 
     @action
-    editChannel(channel: Channel) {
+    editChannel(editedChannel: Channel) {
         this.uiState.loading = true;
-        this.channelsService.editChannel(channel)
+        this.channelsService.editChannel(editedChannel, this.getChannelById(editedChannel.id))
             .subscribe(() => {
                 this.uiState.loading = false;
                 this.getChannels();
             }, () => {
                 this.uiState.loading = false;
             });
+    }
+
+    private getChannelById(id: string) {
+        return this.channels.find(ch => ch.id === id);
     }
 
     @action

@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { toJS } from 'mobx';
 
 import { ClientsStore } from '../../../core/store/clients.store';
-import { Channel } from '../../../core/store/models';
+import { Channel, Client } from '../../../core/store/models';
 
 @Component({
   selector: 'app-add-channel-dialog',
@@ -14,6 +14,7 @@ import { Channel } from '../../../core/store/models';
 export class AddChannelDialogComponent implements OnInit {
   addChannelForm: FormGroup;
   @Output() submit: EventEmitter<Channel> = new EventEmitter<Channel>();
+  editMode: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -26,22 +27,26 @@ export class AddChannelDialogComponent implements OnInit {
     this.addChannelForm = this.fb.group(
       {
         id: [''],
-        name: ['', [Validators.required, Validators.minLength(5)]],
+        name: [''],
         connected: [[]]
       }
     );
 
     if (this.data) {
+      this.editMode = true;
       this.addChannelForm.patchValue(toJS(this.data));
+    } else {
+      this.editMode = false;
     }
   }
 
   onAddChannel() {
     const channel = this.addChannelForm.value;
-    channel.meta = {};
-
     this.submit.emit(channel);
     this.dialogRef.close();
   }
 
+  compareFunction(obj1: Client, obj2: Client) {
+    return obj1.id === obj2.id;
+  }
 }

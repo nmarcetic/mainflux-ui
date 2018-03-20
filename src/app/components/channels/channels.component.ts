@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { toJS } from 'mobx';
 import { Observable } from 'rxjs/Observable';
 
+import { ChannelsStore } from '../../core/store/channels.store';
+import { ClientsStore } from '../../core/store/clients.store';
 import { Channel } from '../../core/store/models';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { AddChannelDialogComponent } from './add-channel-dialog/add-channel-dialog.component';
-import { ClientsStore } from '../../core/store/clients.store';
-import { ChannelsStore } from '../../core/store/channels.store';
 
 @Component({
   selector: 'app-channels',
   templateUrl: './channels.component.html',
-  styleUrls: ['./channels.component.scss']
+  styleUrls: ['./channels.component.scss'],
 })
 export class ChannelsComponent implements OnInit {
   channels: Observable<Channel[]>;
@@ -43,7 +42,7 @@ export class ChannelsComponent implements OnInit {
     });
 
     dialogRef.componentInstance.submit.subscribe((editedChannel: Channel) => {
-      this.channelsStore.editChannel(toJS(editedChannel));
+      this.channelsStore.editChannel(editedChannel);
     });
   }
 

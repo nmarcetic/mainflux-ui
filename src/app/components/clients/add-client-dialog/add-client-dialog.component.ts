@@ -25,36 +25,18 @@ export class AddClientDialogComponent implements OnInit {
         id: [''],
         type: ['', [Validators.required]],
         name: ['', [Validators.required, Validators.minLength(5)]],
-        meta: ['', [this.validJson]]
+        payload: ['']
       }
     );
 
     if (this.data) {
       this.addClientForm.patchValue(this.data);
-      this.addClientForm.get('meta').patchValue(JSON.stringify(this.data.meta));
+      this.addClientForm.get('payload').patchValue(JSON.stringify(this.data.payload));
     }
-  }
-
-  validJson(control: AbstractControl) {
-    if (control.value) {
-      try {
-        JSON.parse(control.value);
-      } catch (e) {
-        return { validJson: true};
-      }
-    }
-
-    return null;
   }
 
   onAddClient() {
     const client = this.addClientForm.value;
-    if (client.meta) {
-      client.meta = JSON.parse(client.meta);
-    } else {
-      client.meta = {};
-    }
-
     this.submit.emit(client);
     this.dialogRef.close();
   }

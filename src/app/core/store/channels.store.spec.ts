@@ -49,12 +49,12 @@ describe('ChannelsStore', () => {
 
         it('should set the channels property to the returned channels from the service', inject([ChannelsStore, ChannelsService],
             (channelsStore: ChannelsStore, channelsService: ChannelsService) => {
-                const serviceReturnValue = { channels: [] };
+                const serviceReturnValue = [];
                 const getChannels = spyOn(channelsService, 'getChannels').and.returnValue(Observable.of(serviceReturnValue));
 
                 channelsStore.getChannels();
 
-                expect(toJS(channelsStore.channels)).toEqual(serviceReturnValue.channels);
+                expect(toJS(channelsStore.channels)).toEqual(serviceReturnValue);
             }));
 
         it('should set the loading flag to false after failed get', inject([ChannelsStore, UiStore, ChannelsService],

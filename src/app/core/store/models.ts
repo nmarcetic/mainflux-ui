@@ -1,14 +1,14 @@
 export interface Channel {
     id?: '';
     name: string;
-    connected: string[];
+    connected: Client[];
 }
 
 export interface Client {
     id?: '';
     type: string;
     name: string;
-    meta: any;
+    payload: string;
 }
 
 export interface User {
